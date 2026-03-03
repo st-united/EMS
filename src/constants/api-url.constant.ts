@@ -1,0 +1,18 @@
+export const API_URL = {
+  USERS: (workspaceId: string) => `/users/${workspaceId}/all`,
+  CREATE_USER: (workspaceId: string) => `/users/${workspaceId}`,
+  UPDATE_USER: (workspaceId: string, userId: string) =>
+    `/users/${workspaceId}/${userId}`,
+  GET_USER: (userId: string) => `/users/${userId}`,
+  ASSIGN_PERMISSION: "/users/assign-permission",
+  LOGIN: "/auth/login",
+  REFRESH_TOKEN: "/auth/refresh",
+  ACTIVATE_ACCOUNT: "/auth/activate",
+  GET_PROFILE: "/users/me",
+  UPDATE_PROFILE: "/users/profile",
+  UPLOAD_AVATAR: "/users/avatar",
+  REMOVE_AVATAR: "/users/avatar",
+  CHANGE_PASSWORD: "/users/change-password",
+  RESET_PASSWORD: "users/reset-password",
+  LOGOUT: "/auth/logout",
+};
