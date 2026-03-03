@@ -1,1 +1,30 @@
-{}
+{
+  "tenant": {
+    "sidebar": {
+      "currentLocation": "Current location",
+      "menu": {
+        "overview": "Overview",
+        "consumption": "Consumption tracking",
+        "bills": "My bills",
+        "profile": "Profile"
+      }
+    },
+    "header": {
+      "menu": {
+        "profile": "Profile",
+        "logout": "Log out"
+      }
+    },
+    "footer": {
+      "copyright": "© {{year}} BM. All rights reserved.",
+      "help": "Help",
+      "contact": "Contact",
+      "terms": "Terms"
+    }
+  },
+  "NOT_FOUND": {
+    "TITLE": "404",
+    "SUB_TITLE": "Sorry, the page you visited does not exist.",
+    "BACK_HOME": "Back to Home"
+  }
+}

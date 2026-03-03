@@ -1,1 +1,30 @@
-{}
+{
+  "tenant": {
+    "sidebar": {
+      "currentLocation": "Địa điểm đang xem",
+      "menu": {
+        "overview": "Tổng quan",
+        "consumption": "Theo dõi tiêu thụ",
+        "bills": "Hóa đơn của tôi",
+        "profile": "Thông tin cá nhân"
+      }
+    },
+    "header": {
+      "menu": {
+        "profile": "Thông tin cá nhân",
+        "logout": "Đăng xuất"
+      }
+    },
+    "footer": {
+      "copyright": "© {{year}} BM. Tất cả quyền được bảo lưu.",
+      "help": "Trợ giúp",
+      "contact": "Liên hệ",
+      "terms": "Điều khoản"
+    }
+  },
+  "NOT_FOUND": {
+    "TITLE": "404",
+    "SUB_TITLE": "Xin lỗi, trang bạn đã truy cập không tồn tại.",
+    "BACK_HOME": "Quay lại"
+  }
+}
