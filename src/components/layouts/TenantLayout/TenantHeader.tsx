@@ -8,16 +8,20 @@ import {
 import { useTranslation } from "react-i18next";
 
 import { LANGUAGE_DATA, LOCALE_STORAGE, LOCALES } from "@/constants";
+import { URL } from "@/constants/url.constant";
+import { useNavigate } from "react-router-dom";
 
 const { Header } = Layout;
 
 export const TenantHeader = () => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
 
   const userMenuItems: MenuProps["items"] = [
     {
-      key: "profile",
+      key: URL.PROFILE,
       label: t("tenant.header.menu.profile"),
+      onClick: () => navigate(URL.PROFILE),
     },
     {
       key: "logout",
