@@ -43,12 +43,17 @@ export const TenantHeader = () => {
 
   return (
     <Header className="flex items-center justify-between bg-[#393939]! px-6 text-white!">
-      <Button type="text" icon={<MenuOutlined />} className="text-white!" />
+      <Button
+        type="text"
+        icon={<MenuOutlined />}
+        className="text-white!"
+        aria-label="Toggle menu"
+      />
 
       <div className="flex items-center gap-6">
         <Dropdown menu={languageMenu} trigger={["click"]}>
           <button className="flex items-center gap-1 text-white">
-            <GlobalOutlined />
+            <GlobalOutlined aria-hidden="true" />
             <span className="text-xs font-medium uppercase">{currentLang}</span>
           </button>
         </Dropdown>
@@ -58,6 +63,7 @@ export const TenantHeader = () => {
           shape="circle"
           icon={<BellOutlined />}
           className="text-white!"
+          aria-label="Notifications"
         />
         <Dropdown menu={{ items: userMenuItems }} trigger={["click"]}>
           <button className="flex items-center gap-2 text-white">

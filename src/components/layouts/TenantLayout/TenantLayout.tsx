@@ -18,7 +18,7 @@ export const TenantLayout = () => {
         <TenantHeader />
 
         <Content className="h-full">
-          <div className="tenant-scroll h-full overflow-y-auto bg-[#191D2A] px-6 py-4 pr-3">
+          <div className="tenant-scroll h-full overflow-y-auto overscroll-contain bg-[#191D2A] px-6 py-4 pr-3">
             <Outlet />
           </div>
         </Content>

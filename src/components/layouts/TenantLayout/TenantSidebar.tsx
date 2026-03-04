@@ -24,7 +24,10 @@ export const TenantSidebar = () => {
         <Typography.Text className="mb-2 block text-xs text-[#99A1AF]!">
           {t("tenant.sidebar.currentLocation")}
         </Typography.Text>
-        <select className="w-full rounded-md border border-[#1d2136] bg-[#1F2937] p-2 text-sm text-white outline-none">
+        <select
+          className="w-full rounded-md border border-[#1d2136] bg-[#1F2937] p-2 text-sm text-white outline-none"
+          aria-label={t("tenant.sidebar.currentLocation")}
+        >
           <option>Căn hộ 1203 • Vinhomes Central Park, Q. Bình Thạnh</option>
         </select>
       </div>

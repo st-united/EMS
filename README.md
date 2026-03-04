@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# EMS (React Application)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern web application built with **React 19**, **TypeScript**, and **Vite**.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Core & Build
 
-## React Compiler
+- **[React 19](https://react.dev/)** - UI Library
+- **[TypeScript](https://www.typescriptlang.org/)** - Static type checking
+- **[Vite](https://vitejs.dev/)** - Blazing fast frontend tooling
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### State Management & Data Fetching
 
-## Expanding the ESLint configuration
+- **[Redux Toolkit](https://redux-toolkit.js.org/)** & **React Redux** - Global state management
+- **[TanStack Query (React Query) v5](https://tanstack.com/query/v5)** - Async state management and data fetching
+- **[Axios](https://axios-http.com/)** - Promise-based HTTP client
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Routing
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+- **[React Router v7](https://reactrouter.com/)** - Declarative routing
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### UI & Styling
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+- **[Ant Design (antd)](https://ant.design/)** - Enterprise-class UI components (includes `antd-img-crop` for image cropping)
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Sass](https://sass-lang.com/)** - CSS extension language
+- **[Lucide React](https://lucide.dev/)** - Beautiful & consistent icon set
+- **[React Markdown](https://github.com/remarkjs/react-markdown)** - Markdown renderer component
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Charts & Data Visualization
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+- **[Chart.js](https://www.chartjs.org/)** & **[react-chartjs-2](https://react-chartjs-2.js.org/)** - JavaScript charting
+- **[Recharts](https://recharts.org/)** - Composable charting library built on React components
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+### Internationalization (i18n)
+
+- **[i18next](https://www.i18next.com/)** & **[react-i18next](https://react.i18next.com/)** - Internationalization framework (with `i18next-http-backend`)
+
+### Utilities & Validation
+
+- **[Yup](https://github.com/jquense/yup)** - Object schema validation
+- **[Lodash](https://lodash.com/)** - JavaScript utility library
+- **[Moment.js](https://momentjs.com/)** - Date manipulation library
+
+### Code Quality & Git Hooks
+
+- **[ESLint](https://eslint.org/)** & **[Prettier](https://prettier.io/)** - Code linting and formatting
+- **[Husky](https://typicode.github.io/husky/)** & **[lint-staged](https://github.com/okonet/lint-staged)** - Git hooks for pre-commit automated checks
+- **[Commitlint](https://commitlint.js.org/)** - Lint commit messages following conventional commits
+
+### Testing
+
+- **[Vitest](https://vitest.dev/)** - Blazing fast unit test framework powered by Vite
+- **[c8](https://github.com/bcoe/c8)** - Code coverage
+
+## 📦 Scripts
+
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn preview` - Preview production build locally
+- `yarn lint` - Run ESLint
+- `yarn format` - Format code with Prettier
