@@ -11,7 +11,7 @@ const { Content } = Layout;
 
 export const TenantLayout = () => {
   return (
-    <Layout id="tenant-layout" className="bg-[#050819] h-screen hidden">
+    <Layout id="tenant-layout" className="bg-[#050819] h-screen text-white!">
       <TenantSidebar />
 
       <Layout>

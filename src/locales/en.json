@@ -58,7 +58,26 @@
   },
   "pages": {
     "overview": {
-      "title": "Overview"
+      "title": "Overview",
+      "error": "Statistical data is unavailable or an error occurred.",
+      "electricity": "Electricity consumption this month",
+      "water": "Water consumption this month",
+      "totalBill": "Total bill this month",
+      "savings": "Savings",
+      "comparedToLastMonth": "compared to last month",
+      "consumptionReduction": "consumption reduction",
+      "chart": {
+        "title": "Last 5 Months Consumption Chart",
+        "subtitle": "Comparison of electricity and water consumption by month",
+        "electricity": "Electricity (kWh)",
+        "water": "Water (m³)"
+      },
+      "dailyChart": {
+        "electricityTitle": "Electricity consumption this month",
+        "electricitySubtitle": "Daily tracking",
+        "waterTitle": "Water consumption this month",
+        "waterSubtitle": "Daily tracking"
+      }
     },
     "tracking": {
       "title": "Consumption Tracking"

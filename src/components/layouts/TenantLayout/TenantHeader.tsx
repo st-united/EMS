@@ -11,6 +11,7 @@ import { LANGUAGE_DATA, LOCALE_STORAGE, LOCALES } from "@/constants";
 import { URL } from "@/constants/url.constant";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "@/hooks/useAuth";
+import { useAppSelector } from "@/redux/hooks";
 
 const { Header } = Layout;
 
@@ -18,6 +19,7 @@ export const TenantHeader = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { mutate: logoutMutate } = useLogout();
+  const { user } = useAppSelector((state) => state.auth);
 
   const userMenuItems: MenuProps["items"] = [
     {
@@ -70,10 +72,19 @@ export const TenantHeader = () => {
           className="text-white!"
           aria-label="Notifications"
         />
-        <Dropdown menu={{ items: userMenuItems }} trigger={["click"]}>
+        <Dropdown
+          menu={{
+            items: userMenuItems,
+          }}
+          trigger={["click"]}
+        >
           <button className="flex items-center gap-2 text-white">
-            <Avatar size="small" icon={<UserOutlined />} />
-            <span className="text-sm font-medium">Lam Hoang</span>
+            <Avatar
+              size="small"
+              src={user?.avatar}
+              icon={!user?.avatar && <UserOutlined />}
+            />
+            <span className="text-sm font-medium">{user?.name || "User"}</span>
           </button>
         </Dropdown>
       </div>
