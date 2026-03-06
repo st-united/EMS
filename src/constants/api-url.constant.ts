@@ -14,5 +14,7 @@ export const API_URL = {
   REMOVE_AVATAR: "/users/avatar",
   CHANGE_PASSWORD: "/users/change-password",
   RESET_PASSWORD: "users/reset-password",
+  REGISTER: "/auth/register",
+  FORGOT_PASSWORD: "/auth/forgot-password",
   LOGOUT: "/auth/logout",
 };

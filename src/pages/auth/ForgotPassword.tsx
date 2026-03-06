@@ -2,14 +2,16 @@ import { Button, Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
+import { useForgotPassword } from "@/hooks";
 import { URL } from "@/constants/url.constant";
+import type { ForgotPasswordPayload } from "@/interfaces";
 
 export const ForgotPasswordPage = () => {
   const { t } = useTranslation();
+  const { mutate: forgotPasswordMutate, isPending } = useForgotPassword();
 
-  const onFinish = (values: { email: string }) => {
-    // TODO: Implement actual password reset logic here
-    console.log("Password reset requested for:", values.email);
+  const onFinish = (values: ForgotPasswordPayload) => {
+    forgotPasswordMutate(values);
   };
 
   return (
@@ -32,6 +34,7 @@ export const ForgotPasswordPage = () => {
           layout="vertical"
           onFinish={onFinish}
           autoComplete="off"
+          disabled={isPending}
         >
           <Form.Item
             label={<span className="text-white">Email</span>}
@@ -55,6 +58,7 @@ export const ForgotPasswordPage = () => {
               htmlType="submit"
               size="large"
               className="w-full font-medium"
+              loading={isPending}
             >
               Gửi liên kết khôi phục
             </Button>

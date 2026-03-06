@@ -2,6 +2,7 @@ export * from "./overview/Overview";
 export * from "./tracking/Tracking";
 export * from "./invoice/Invoice";
 export * from "./profile/Profile";
+export * from "./home/HomePage";
 export * from "./errors";
 
 // Auth

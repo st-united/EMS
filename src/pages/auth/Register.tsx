@@ -1,17 +1,17 @@
 import { Button, Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+import { useRegister } from "@/hooks";
 import { URL } from "@/constants/url.constant";
+import type { RegisterCredentials } from "@/interfaces";
 
 export const RegisterPage = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const { mutate: registerMutate, isPending } = useRegister();
 
-  const onFinish = (values: Record<string, unknown>) => {
-    // TODO: Implement actual registration logic here
-    console.log("Success:", values);
-    navigate(URL.LOGIN);
+  const onFinish = (values: RegisterCredentials) => {
+    registerMutate(values);
   };
 
   return (
@@ -31,6 +31,7 @@ export const RegisterPage = () => {
           layout="vertical"
           onFinish={onFinish}
           autoComplete="off"
+          disabled={isPending}
         >
           <Form.Item
             label={<span className="text-white">Email</span>}
@@ -102,6 +103,7 @@ export const RegisterPage = () => {
               htmlType="submit"
               size="large"
               className="w-full font-medium"
+              loading={isPending}
             >
               Đăng ký
             </Button>

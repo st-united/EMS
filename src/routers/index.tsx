@@ -2,13 +2,20 @@ import { Outlet, createBrowserRouter } from "react-router-dom";
 
 import privateRoutes from "./private.router";
 import publicRoutes from "./public.router";
-import { NotFoundPage } from "@/pages";
+import { HomePage, NotFoundPage } from "@/pages";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Outlet />,
     errorElement: <NotFoundPage />,
-    children: [...publicRoutes, ...privateRoutes],
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      ...publicRoutes,
+      ...privateRoutes,
+    ],
   },
 ]);

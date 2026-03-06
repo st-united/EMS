@@ -1,17 +1,17 @@
 import { Button, Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+import { useLogin } from "@/hooks";
 import { URL } from "@/constants/url.constant";
+import type { Credentials } from "@/interfaces";
 
 export const LoginPage = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const { mutate: loginMutate, isPending } = useLogin();
 
-  const onFinish = (values: Record<string, unknown>) => {
-    // TODO: Implement actual login mutation logic here
-    console.log("Success:", values);
-    navigate(URL.OVERVIEW);
+  const onFinish = (values: Credentials) => {
+    loginMutate(values);
   };
 
   return (
@@ -32,6 +32,7 @@ export const LoginPage = () => {
           onFinish={onFinish}
           autoComplete="off"
           className="text-white"
+          disabled={isPending}
         >
           <Form.Item
             label={<span className="text-white">Email</span>}
@@ -79,6 +80,7 @@ export const LoginPage = () => {
               htmlType="submit"
               size="large"
               className="w-full font-medium"
+              loading={isPending}
             >
               Đăng nhập
             </Button>

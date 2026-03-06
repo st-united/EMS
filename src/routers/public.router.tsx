@@ -1,4 +1,4 @@
-import { type RouteObject, Navigate } from "react-router-dom";
+import { type RouteObject } from "react-router-dom";
 
 import { PublicLayout } from "@/components/layouts";
 import { URL } from "@/constants/url.constant";
@@ -8,10 +8,6 @@ const routes: RouteObject[] = [
   {
     element: <PublicLayout />,
     children: [
-      {
-        path: "/",
-        element: <Navigate to={URL.LOGIN} replace />,
-      },
       {
         path: URL.LOGIN,
         element: <LoginPage />,
