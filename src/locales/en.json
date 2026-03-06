@@ -1,4 +1,75 @@
 {
+  "home": {
+    "title": "EMS",
+    "subtitle": "Energy Management System",
+    "goToTenant": "Go to Tenant",
+    "logout": "Log out",
+    "login": "Log in"
+  },
+  "auth": {
+    "login": {
+      "title": "Log in",
+      "subtitle": "Welcome back to EMS",
+      "email": "Email",
+      "password": "Password",
+      "emailRequired": "Please enter your email!",
+      "emailInvalid": "Invalid email address!",
+      "passwordRequired": "Please enter your password!",
+      "forgotPassword": "Forgot password?",
+      "submit": "Log in",
+      "noAccount": "Don't have an account?",
+      "registerNow": "Register now",
+      "success": "Login successful!",
+      "fail": "Login failed!",
+      "unauthorized": "Incorrect email or password!"
+    },
+    "register": {
+      "title": "Create account",
+      "subtitle": "Start managing energy today",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "emailRequired": "Please enter your email!",
+      "emailInvalid": "Invalid email address!",
+      "passwordRequired": "Please enter your password!",
+      "passwordMin": "Password must be at least 8 characters!",
+      "confirmPasswordRequired": "Please confirm your password!",
+      "passwordMismatch": "Passwords do not match!",
+      "submit": "Register",
+      "hasAccount": "Already have an account?",
+      "loginNow": "Log in now",
+      "success": "Registration successful! Please check your email to activate your account.",
+      "fail": "Registration failed!"
+    },
+    "forgotPassword": {
+      "title": "Forgot password",
+      "subtitle": "Enter your email and we'll send you a password reset link.",
+      "email": "Email",
+      "emailRequired": "Please enter your email!",
+      "emailInvalid": "Invalid email address!",
+      "submit": "Send reset link",
+      "backToLogin": "Back to Login",
+      "success": "Password reset link has been sent to your email!",
+      "fail": "Request failed!"
+    },
+    "logout": {
+      "success": "Logged out successfully!"
+    }
+  },
+  "pages": {
+    "overview": {
+      "title": "Overview"
+    },
+    "tracking": {
+      "title": "Consumption Tracking"
+    },
+    "invoice": {
+      "title": "Invoice"
+    },
+    "profile": {
+      "title": "Profile"
+    }
+  },
   "tenant": {
     "sidebar": {
       "currentLocation": "Current location",

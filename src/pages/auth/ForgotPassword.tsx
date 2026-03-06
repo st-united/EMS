@@ -19,13 +19,10 @@ export const ForgotPasswordPage = () => {
       <div className="w-full max-w-md rounded-2xl bg-[#191D2A] p-8 shadow-xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-white mb-2">
-            {t("auth.forgotPassword.title", "Quên mật khẩu")}
+            {t("auth.forgotPassword.title")}
           </h1>
           <p className="text-sm text-[#99A1AF]">
-            {t(
-              "auth.forgotPassword.subtitle",
-              "Nhập email của bạn và chúng tôi sẽ gửi liên kết khôi phục mật khẩu.",
-            )}
+            {t("auth.forgotPassword.subtitle")}
           </p>
         </div>
 
@@ -37,11 +34,21 @@ export const ForgotPasswordPage = () => {
           disabled={isPending}
         >
           <Form.Item
-            label={<span className="text-white">Email</span>}
+            label={
+              <span className="text-white">
+                {t("auth.forgotPassword.email")}
+              </span>
+            }
             name="email"
             rules={[
-              { required: true, message: "Vui lòng nhập email!" },
-              { type: "email", message: "Email không hợp lệ!" },
+              {
+                required: true,
+                message: t("auth.forgotPassword.emailRequired"),
+              },
+              {
+                type: "email",
+                message: t("auth.forgotPassword.emailInvalid"),
+              },
             ]}
           >
             <Input
@@ -60,7 +67,7 @@ export const ForgotPasswordPage = () => {
               className="w-full font-medium"
               loading={isPending}
             >
-              Gửi liên kết khôi phục
+              {t("auth.forgotPassword.submit")}
             </Button>
           </Form.Item>
 
@@ -82,7 +89,7 @@ export const ForgotPasswordPage = () => {
               >
                 <path d="m15 18-6-6 6-6" />
               </svg>
-              Quay lại Đăng nhập
+              {t("auth.forgotPassword.backToLogin")}
             </Link>
           </div>
         </Form>

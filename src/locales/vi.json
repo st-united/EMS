@@ -1,4 +1,75 @@
 {
+  "home": {
+    "title": "EMS",
+    "subtitle": "Hệ thống quản lý năng lượng",
+    "goToTenant": "Đi tới Tenant",
+    "logout": "Đăng xuất",
+    "login": "Đăng nhập"
+  },
+  "auth": {
+    "login": {
+      "title": "Đăng nhập",
+      "subtitle": "Chào mừng trở lại EMS",
+      "email": "Email",
+      "password": "Mật khẩu",
+      "emailRequired": "Vui lòng nhập email!",
+      "emailInvalid": "Email không hợp lệ!",
+      "passwordRequired": "Vui lòng nhập mật khẩu!",
+      "forgotPassword": "Quên mật khẩu?",
+      "submit": "Đăng nhập",
+      "noAccount": "Chưa có tài khoản?",
+      "registerNow": "Đăng ký ngay",
+      "success": "Đăng nhập thành công!",
+      "fail": "Đăng nhập thất bại!",
+      "unauthorized": "Sai email hoặc mật khẩu!"
+    },
+    "register": {
+      "title": "Tạo tài khoản",
+      "subtitle": "Bắt đầu quản lý năng lượng hôm nay",
+      "email": "Email",
+      "password": "Mật khẩu",
+      "confirmPassword": "Xác nhận mật khẩu",
+      "emailRequired": "Vui lòng nhập email!",
+      "emailInvalid": "Email không hợp lệ!",
+      "passwordRequired": "Vui lòng nhập mật khẩu!",
+      "passwordMin": "Mật khẩu phải có ít nhất 8 ký tự!",
+      "confirmPasswordRequired": "Vui lòng xác nhận mật khẩu!",
+      "passwordMismatch": "Mật khẩu xác nhận không khớp!",
+      "submit": "Đăng ký",
+      "hasAccount": "Đã có tài khoản?",
+      "loginNow": "Đăng nhập ngay",
+      "success": "Đăng ký thành công! Vui lòng kiểm tra email để kích hoạt tài khoản.",
+      "fail": "Đăng ký thất bại!"
+    },
+    "forgotPassword": {
+      "title": "Quên mật khẩu",
+      "subtitle": "Nhập email của bạn và chúng tôi sẽ gửi liên kết khôi phục mật khẩu.",
+      "email": "Email",
+      "emailRequired": "Vui lòng nhập email!",
+      "emailInvalid": "Email không hợp lệ!",
+      "submit": "Gửi liên kết khôi phục",
+      "backToLogin": "Quay lại Đăng nhập",
+      "success": "Liên kết khôi phục mật khẩu đã được gửi đến email của bạn!",
+      "fail": "Gửi yêu cầu thất bại!"
+    },
+    "logout": {
+      "success": "Đăng xuất thành công!"
+    }
+  },
+  "pages": {
+    "overview": {
+      "title": "Tổng quan"
+    },
+    "tracking": {
+      "title": "Theo dõi tiêu thụ"
+    },
+    "invoice": {
+      "title": "Hóa đơn"
+    },
+    "profile": {
+      "title": "Thông tin cá nhân"
+    }
+  },
   "tenant": {
     "sidebar": {
       "currentLocation": "Địa điểm đang xem",

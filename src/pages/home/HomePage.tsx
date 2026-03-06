@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import { LogIn, LogOut, Building2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { useLogout } from "@/hooks";
@@ -9,6 +10,7 @@ import { useAppSelector } from "@/redux/hooks";
 const DEMO_TENANT_ID = "demo-workspace-001";
 
 export const HomePage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const { mutate: logoutMutate, isPending: isLoggingOut } = useLogout();
@@ -20,8 +22,10 @@ export const HomePage = () => {
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#1890ff]/10">
             <Building2 className="h-8 w-8 text-[#1890ff]" />
           </div>
-          <h1 className="text-2xl font-bold text-white mb-2">EMS</h1>
-          <p className="text-sm text-[#99A1AF]">Energy Management System</p>
+          <h1 className="text-2xl font-bold text-white mb-2">
+            {t("home.title")}
+          </h1>
+          <p className="text-sm text-[#99A1AF]">{t("home.subtitle")}</p>
         </div>
 
         {isAuth ? (
@@ -39,7 +43,7 @@ export const HomePage = () => {
                 )
               }
             >
-              Đi tới Tenant
+              {t("home.goToTenant")}
             </Button>
             <Button
               size="large"
@@ -49,7 +53,7 @@ export const HomePage = () => {
               loading={isLoggingOut}
               onClick={() => logoutMutate()}
             >
-              Đăng xuất
+              {t("home.logout")}
             </Button>
           </div>
         ) : (
@@ -60,7 +64,7 @@ export const HomePage = () => {
             className="w-full font-medium"
             onClick={() => navigate(URL.LOGIN)}
           >
-            Đăng nhập
+            {t("home.login")}
           </Button>
         )}
       </div>

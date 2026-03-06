@@ -19,11 +19,9 @@ export const LoginPage = () => {
       <div className="w-full max-w-md rounded-2xl bg-[#191D2A] p-8 shadow-xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-white mb-2">
-            {t("auth.login.title", "Đăng nhập")}
+            {t("auth.login.title")}
           </h1>
-          <p className="text-sm text-[#99A1AF]">
-            {t("auth.login.subtitle", "Chào mừng trở lại EMS")}
-          </p>
+          <p className="text-sm text-[#99A1AF]">{t("auth.login.subtitle")}</p>
         </div>
 
         <Form
@@ -35,11 +33,11 @@ export const LoginPage = () => {
           disabled={isPending}
         >
           <Form.Item
-            label={<span className="text-white">Email</span>}
+            label={<span className="text-white">{t("auth.login.email")}</span>}
             name="email"
             rules={[
-              { required: true, message: "Vui lòng nhập email!" },
-              { type: "email", message: "Email không hợp lệ!" },
+              { required: true, message: t("auth.login.emailRequired") },
+              { type: "email", message: t("auth.login.emailInvalid") },
             ]}
           >
             <Input
@@ -51,9 +49,13 @@ export const LoginPage = () => {
           </Form.Item>
 
           <Form.Item
-            label={<span className="text-white">Mật khẩu</span>}
+            label={
+              <span className="text-white">{t("auth.login.password")}</span>
+            }
             name="password"
-            rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
+            rules={[
+              { required: true, message: t("auth.login.passwordRequired") },
+            ]}
           >
             <Input.Password
               size="large"
@@ -70,7 +72,7 @@ export const LoginPage = () => {
               to={URL.FORGOT_PASSWORD}
               className="text-sm font-medium text-[#1890ff] hover:text-blue-400"
             >
-              Quên mật khẩu?
+              {t("auth.login.forgotPassword")}
             </Link>
           </div>
 
@@ -82,17 +84,17 @@ export const LoginPage = () => {
               className="w-full font-medium"
               loading={isPending}
             >
-              Đăng nhập
+              {t("auth.login.submit")}
             </Button>
           </Form.Item>
 
           <div className="text-center text-sm text-[#99A1AF]">
-            Chưa có tài khoản?{" "}
+            {t("auth.login.noAccount")}{" "}
             <Link
               to={URL.REGISTER}
               className="font-medium text-[#1890ff] hover:text-blue-400"
             >
-              Đăng ký ngay
+              {t("auth.login.registerNow")}
             </Link>
           </div>
         </Form>

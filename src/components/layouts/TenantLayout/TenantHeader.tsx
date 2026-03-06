@@ -10,12 +10,14 @@ import { useTranslation } from "react-i18next";
 import { LANGUAGE_DATA, LOCALE_STORAGE, LOCALES } from "@/constants";
 import { URL } from "@/constants/url.constant";
 import { useNavigate } from "react-router-dom";
+import { useLogout } from "@/hooks/useAuth";
 
 const { Header } = Layout;
 
 export const TenantHeader = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const { mutate: logoutMutate } = useLogout();
 
   const userMenuItems: MenuProps["items"] = [
     {
@@ -26,6 +28,9 @@ export const TenantHeader = () => {
     {
       key: "logout",
       label: t("tenant.header.menu.logout"),
+      onClick: () => {
+        logoutMutate();
+      },
     },
   ];
 

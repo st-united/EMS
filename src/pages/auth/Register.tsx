@@ -19,10 +19,10 @@ export const RegisterPage = () => {
       <div className="w-full max-w-md rounded-2xl bg-[#191D2A] p-8 shadow-xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-white mb-2">
-            {t("auth.register.title", "Tạo tài khoản")}
+            {t("auth.register.title")}
           </h1>
           <p className="text-sm text-[#99A1AF]">
-            {t("auth.register.subtitle", "Bắt đầu quản lý năng lượng hôm nay")}
+            {t("auth.register.subtitle")}
           </p>
         </div>
 
@@ -34,11 +34,13 @@ export const RegisterPage = () => {
           disabled={isPending}
         >
           <Form.Item
-            label={<span className="text-white">Email</span>}
+            label={
+              <span className="text-white">{t("auth.register.email")}</span>
+            }
             name="email"
             rules={[
-              { required: true, message: "Vui lòng nhập email!" },
-              { type: "email", message: "Email không hợp lệ!" },
+              { required: true, message: t("auth.register.emailRequired") },
+              { type: "email", message: t("auth.register.emailInvalid") },
             ]}
           >
             <Input
@@ -50,11 +52,13 @@ export const RegisterPage = () => {
           </Form.Item>
 
           <Form.Item
-            label={<span className="text-white">Mật khẩu</span>}
+            label={
+              <span className="text-white">{t("auth.register.password")}</span>
+            }
             name="password"
             rules={[
-              { required: true, message: "Vui lòng nhập mật khẩu!" },
-              { min: 8, message: "Mật khẩu phải có ít nhất 8 ký tự!" },
+              { required: true, message: t("auth.register.passwordRequired") },
+              { min: 8, message: t("auth.register.passwordMin") },
             ]}
             hasFeedback
           >
@@ -69,19 +73,26 @@ export const RegisterPage = () => {
           </Form.Item>
 
           <Form.Item
-            label={<span className="text-white">Xác nhận mật khẩu</span>}
+            label={
+              <span className="text-white">
+                {t("auth.register.confirmPassword")}
+              </span>
+            }
             name="confirmPassword"
             dependencies={["password"]}
             hasFeedback
             rules={[
-              { required: true, message: "Vui lòng xác nhận mật khẩu!" },
+              {
+                required: true,
+                message: t("auth.register.confirmPasswordRequired"),
+              },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue("password") === value) {
                     return Promise.resolve();
                   }
                   return Promise.reject(
-                    new Error("Mật khẩu xác nhận không khớp!"),
+                    new Error(t("auth.register.passwordMismatch")),
                   );
                 },
               }),
@@ -105,17 +116,17 @@ export const RegisterPage = () => {
               className="w-full font-medium"
               loading={isPending}
             >
-              Đăng ký
+              {t("auth.register.submit")}
             </Button>
           </Form.Item>
 
           <div className="text-center text-sm text-[#99A1AF]">
-            Đã có tài khoản?{" "}
+            {t("auth.register.hasAccount")}{" "}
             <Link
               to={URL.LOGIN}
               className="font-medium text-[#1890ff] hover:text-blue-400"
             >
-              Đăng nhập ngay
+              {t("auth.register.loginNow")}
             </Link>
           </div>
         </Form>
