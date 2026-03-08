@@ -3,17 +3,10 @@ import { EyeOutlined, DownloadOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
-import type { Invoice } from "@/interfaces";
-import "../styles.css"; // We will add some custom css for Antd dark table if needed
 
-interface InvoiceTableProps {
-  data: Invoice[];
-  isLoading: boolean;
-  page: number;
-  take: number;
-  total: number;
-  onPageChange: (page: number, pageSize: number) => void;
-}
+import type { Invoice, InvoiceTableProps } from "@/interfaces";
+
+import "../styles.css";
 
 export const InvoiceTable = ({
   data,
@@ -47,13 +40,13 @@ export const InvoiceTable = ({
         if (isDien) {
           return (
             <span className="inline-block bg-[#064e3b] text-[#34d399] px-3 py-1 rounded align-middle text-sm font-medium">
-              Điện
+              {t("pages.invoice.table.electricity", "Điện")}
             </span>
           );
         }
         return (
           <span className="inline-block bg-[#1e3a8a] text-[#60a5fa] px-3 py-1 rounded align-middle text-sm font-medium">
-            Nước
+            {t("pages.invoice.table.water", "Nước")}
           </span>
         );
       },
@@ -65,7 +58,10 @@ export const InvoiceTable = ({
         // Derive period from issueDate or notificationTitle
         const date = dayjs(record.issueDate);
         return (
-          <span className="text-[#9ca3af]">Tháng {date.format("M/YYYY")}</span>
+          <span className="text-[#9ca3af]">
+            {t("pages.invoice.table.monthPrefix", "Tháng")}{" "}
+            {date.format("M/YYYY")}
+          </span>
         );
       },
     },
@@ -104,13 +100,13 @@ export const InvoiceTable = ({
         if (isPending) {
           return (
             <span className="inline-block border border-[#ca8a04] bg-transparent text-[#facc15] px-3 py-0.5 rounded-full align-middle text-sm font-medium">
-              Chưa thanh toán
+              {t("pages.invoice.table.unpaidTag", "Chưa thanh toán")}
             </span>
           );
         }
         return (
           <span className="inline-block border border-[#16a34a] bg-transparent text-[#4ade80] px-3 py-0.5 rounded-full align-middle text-sm font-medium">
-            Đã thanh toán
+            {t("pages.invoice.table.paidTag", "Đã thanh toán")}
           </span>
         );
       },
@@ -126,7 +122,8 @@ export const InvoiceTable = ({
             </span>
             {record.status !== "PENDING" && record.status !== "UNPAID" && (
               <span className="text-xs text-[#6b7280]">
-                Đã thanh toán: {dayjs(record.issueDate).format("DD/MM/YYYY")}
+                {t("pages.invoice.table.paidOnPrefix", "Đã thanh toán:")}{" "}
+                {dayjs(record.issueDate).format("DD/MM/YYYY")}
               </span>
             )}
           </div>
@@ -155,7 +152,7 @@ export const InvoiceTable = ({
             </button>
             {isPending && (
               <button className="bg-[#14b8a6] hover:bg-[#0d9488] transition-colors border-none text-white px-4 py-1.5 rounded-md font-medium cursor-pointer">
-                Thanh toán
+                {t("pages.invoice.table.pay", "Thanh toán")}
               </button>
             )}
           </Space>

@@ -83,7 +83,36 @@
       "title": "Consumption Tracking"
     },
     "invoice": {
-      "title": "Invoice"
+      "title": "Invoices",
+      "unpaid": "Unpaid",
+      "invoiceCount": "invoices",
+      "paidThisMonth": "Paid this month",
+      "month": "Month",
+      "totalInvoices": "Total invoices",
+      "last6Months": "Last 6 months",
+      "list": {
+        "title": "Invoice List",
+        "subtitle": "Manage and pay your invoices"
+      },
+      "table": {
+        "invoiceNumber": "Invoice Number",
+        "type": "Type",
+        "period": "Period",
+        "consumption": "Consumption",
+        "amount": "Amount",
+        "status": "Status",
+        "dueDate": "Due Date",
+        "action": "Action",
+        "view": "View details",
+        "download": "Download",
+        "pay": "Pay",
+        "electricity": "Electricity",
+        "water": "Water",
+        "monthPrefix": "Month",
+        "unpaidTag": "Unpaid",
+        "paidTag": "Paid",
+        "paidOnPrefix": "Paid on:"
+      }
     },
     "profile": {
       "title": "Profile"
@@ -116,5 +145,8 @@
     "TITLE": "404",
     "SUB_TITLE": "Sorry, the page you visited does not exist.",
     "BACK_HOME": "Back to Home"
+  },
+  "errors": {
+    "locationIdRequired": "Location ID is required!"
   }
 }

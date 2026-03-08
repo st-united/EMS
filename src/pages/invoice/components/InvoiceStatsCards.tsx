@@ -1,11 +1,7 @@
 import { Wallet, CalendarCheck, FileText } from "lucide-react";
-import type { InvoiceStats } from "@/interfaces";
 import { useTranslation } from "react-i18next";
 
-interface InvoiceStatsCardsProps {
-  stats?: InvoiceStats;
-  isLoading?: boolean;
-}
+import type { InvoiceStatsCardsProps } from "@/interfaces";
 
 export const InvoiceStatsCards = ({
   stats,
