@@ -3,17 +3,11 @@ import { EyeOutlined, DownloadOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
-import type { Invoice } from "@/interfaces";
-import "../styles.css"; // We will add some custom css for Antd dark table if needed
 
-interface InvoiceTableProps {
-  data: Invoice[];
-  isLoading: boolean;
-  page: number;
-  take: number;
-  total: number;
-  onPageChange: (page: number, pageSize: number) => void;
-}
+import type { Invoice, InvoiceTableProps } from "@/interfaces";
+import { InvoiceStatus, InvoiceTypeEnum } from "@/constants";
+
+import "../styles.css";
 
 export const InvoiceTable = ({
   data,
@@ -41,19 +35,20 @@ export const InvoiceTable = ({
       dataIndex: "invoiceType",
       key: "invoiceType",
       render: (type: string) => {
+        const lowerType = type.toLowerCase();
         const isDien =
-          type.toLowerCase().includes("điện") ||
-          type.toLowerCase().includes("electricity");
+          lowerType.includes(InvoiceTypeEnum.ELECTRICITY_VI) ||
+          lowerType.includes(InvoiceTypeEnum.ELECTRICITY_EN);
         if (isDien) {
           return (
             <span className="inline-block bg-[#064e3b] text-[#34d399] px-3 py-1 rounded align-middle text-sm font-medium">
-              Điện
+              {t("pages.invoice.table.electricity", "Điện")}
             </span>
           );
         }
         return (
           <span className="inline-block bg-[#1e3a8a] text-[#60a5fa] px-3 py-1 rounded align-middle text-sm font-medium">
-            Nước
+            {t("pages.invoice.table.water", "Nước")}
           </span>
         );
       },
@@ -62,10 +57,12 @@ export const InvoiceTable = ({
       title: t("pages.invoice.table.period", "Kỳ hạn"),
       key: "period",
       render: (_, record) => {
-        // Derive period from issueDate or notificationTitle
         const date = dayjs(record.issueDate);
         return (
-          <span className="text-[#9ca3af]">Tháng {date.format("M/YYYY")}</span>
+          <span className="text-[#9ca3af]">
+            {t("pages.invoice.table.monthPrefix", "Tháng")}{" "}
+            {date.format("M/YYYY")}
+          </span>
         );
       },
     },
@@ -74,9 +71,10 @@ export const InvoiceTable = ({
       dataIndex: "consumedKwh",
       key: "consumedKwh",
       render: (val, record) => {
+        const lowerType = record.invoiceType.toLowerCase();
         const isDien =
-          record.invoiceType.toLowerCase().includes("điện") ||
-          record.invoiceType.toLowerCase().includes("electricity");
+          lowerType.includes(InvoiceTypeEnum.ELECTRICITY_VI) ||
+          lowerType.includes(InvoiceTypeEnum.ELECTRICITY_EN);
         const unit = isDien ? "kWh" : "m³";
         return (
           <span className="text-[#d1d5db]">
@@ -100,17 +98,18 @@ export const InvoiceTable = ({
       dataIndex: "status",
       key: "status",
       render: (status: string) => {
-        const isPending = status === "PENDING" || status === "UNPAID";
+        const isPending =
+          status === InvoiceStatus.PENDING || status === InvoiceStatus.UNPAID;
         if (isPending) {
           return (
             <span className="inline-block border border-[#ca8a04] bg-transparent text-[#facc15] px-3 py-0.5 rounded-full align-middle text-sm font-medium">
-              Chưa thanh toán
+              {t("pages.invoice.table.unpaidTag", "Chưa thanh toán")}
             </span>
           );
         }
         return (
           <span className="inline-block border border-[#16a34a] bg-transparent text-[#4ade80] px-3 py-0.5 rounded-full align-middle text-sm font-medium">
-            Đã thanh toán
+            {t("pages.invoice.table.paidTag", "Đã thanh toán")}
           </span>
         );
       },
@@ -124,11 +123,13 @@ export const InvoiceTable = ({
             <span className="text-[#d1d5db]">
               {dayjs(record.dueDate).format("DD/MM/YYYY")}
             </span>
-            {record.status !== "PENDING" && record.status !== "UNPAID" && (
-              <span className="text-xs text-[#6b7280]">
-                Đã thanh toán: {dayjs(record.issueDate).format("DD/MM/YYYY")}
-              </span>
-            )}
+            {record.status !== InvoiceStatus.PENDING &&
+              record.status !== InvoiceStatus.UNPAID && (
+                <span className="text-xs text-[#6b7280]">
+                  {t("pages.invoice.table.paidOnPrefix", "Đã thanh toán:")}{" "}
+                  {dayjs(record.issueDate).format("DD/MM/YYYY")}
+                </span>
+              )}
           </div>
         );
       },
@@ -138,7 +139,8 @@ export const InvoiceTable = ({
       key: "action",
       render: (_, record) => {
         const isPending =
-          record.status === "PENDING" || record.status === "UNPAID";
+          record.status === InvoiceStatus.PENDING ||
+          record.status === InvoiceStatus.UNPAID;
         return (
           <Space size="middle">
             <button
@@ -155,7 +157,7 @@ export const InvoiceTable = ({
             </button>
             {isPending && (
               <button className="bg-[#14b8a6] hover:bg-[#0d9488] transition-colors border-none text-white px-4 py-1.5 rounded-md font-medium cursor-pointer">
-                Thanh toán
+                {t("pages.invoice.table.pay", "Thanh toán")}
               </button>
             )}
           </Space>

@@ -83,7 +83,36 @@
       "title": "Theo dõi tiêu thụ"
     },
     "invoice": {
-      "title": "Hóa đơn"
+      "title": "Công nợ",
+      "unpaid": "Chưa thanh toán",
+      "invoiceCount": "hóa đơn",
+      "paidThisMonth": "Đã thanh toán tháng này",
+      "month": "Tháng",
+      "totalInvoices": "Tổng số hóa đơn",
+      "last6Months": "6 tháng gần nhất",
+      "list": {
+        "title": "Danh sách hóa đơn",
+        "subtitle": "Quản lý và thanh toán hóa đơn của bạn"
+      },
+      "table": {
+        "invoiceNumber": "Mã hóa đơn",
+        "type": "Loại",
+        "period": "Kỳ hạn",
+        "consumption": "Tiêu thụ",
+        "amount": "Số tiền",
+        "status": "Trạng thái",
+        "dueDate": "Hạn thanh toán",
+        "action": "Hành động",
+        "view": "Xem chi tiết",
+        "download": "Tải xuống",
+        "pay": "Thanh toán",
+        "electricity": "Điện",
+        "water": "Nước",
+        "monthPrefix": "Tháng",
+        "unpaidTag": "Chưa thanh toán",
+        "paidTag": "Đã thanh toán",
+        "paidOnPrefix": "Đã thanh toán:"
+      }
     },
     "profile": {
       "title": "Thông tin cá nhân"
@@ -116,5 +145,8 @@
     "TITLE": "404",
     "SUB_TITLE": "Xin lỗi, trang bạn đã truy cập không tồn tại.",
     "BACK_HOME": "Quay lại"
+  },
+  "errors": {
+    "locationIdRequired": "Vui lòng cung cấp mã địa điểm (Location ID)!"
   }
 }

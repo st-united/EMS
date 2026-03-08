@@ -33,3 +33,17 @@ export interface InvoicesResponse {
   meta: PaginationMeta;
   message: string;
 }
+
+export interface InvoiceTableProps {
+  data: Invoice[];
+  isLoading: boolean;
+  page: number;
+  take: number;
+  total: number;
+  onPageChange: (page: number, pageSize: number) => void;
+}
+
+export interface InvoiceStatsCardsProps {
+  stats?: InvoiceStats;
+  isLoading?: boolean;
+}
