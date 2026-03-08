@@ -1,0 +1,60 @@
+.invoice-dark-table .ant-table {
+  background-color: transparent !important;
+  color: #d1d5db !important;
+}
+
+.invoice-dark-table .ant-table-thead > tr > th {
+  background-color: transparent !important;
+  color: #9ca3af !important;
+  border-bottom: 1px solid #1f2937 !important;
+  font-weight: 500;
+  padding: 16px 24px;
+}
+
+.invoice-dark-table .ant-table-thead > tr > th::before {
+  display: none !important;
+}
+
+.invoice-dark-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #1f2937 !important;
+  background-color: transparent !important;
+  padding: 16px 24px;
+  transition: background-color 0.2s;
+}
+
+.invoice-dark-table .ant-table-tbody > tr:hover > td {
+  background-color: #111827 !important;
+}
+
+.invoice-dark-table .ant-empty-description {
+  color: #9ca3af !important;
+}
+
+.invoice-dark-table .ant-pagination-item {
+  background-color: transparent;
+  border-color: #374151;
+}
+
+.invoice-dark-table .ant-pagination-item a {
+  color: #d1d5db;
+}
+
+.invoice-dark-table .ant-pagination-item-active {
+  background-color: #1f2937;
+  border-color: #4b5563;
+}
+
+.invoice-dark-table .ant-pagination-item-active a {
+  color: #fff;
+}
+
+.invoice-dark-table .ant-pagination-prev .ant-pagination-item-link,
+.invoice-dark-table .ant-pagination-next .ant-pagination-item-link {
+  background-color: transparent;
+  border-color: #374151;
+  color: #d1d5db;
+}
+
+.invoice-dark-table .ant-table-pagination {
+  margin-right: 24px !important;
+}

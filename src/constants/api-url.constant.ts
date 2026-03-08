@@ -24,4 +24,7 @@ export const API_URL = {
     `/locations/${locationId}/consumption/5-months-chart`,
   GET_CURRENT_MONTH_DAILY_CHART: (locationId: string) =>
     `/locations/${locationId}/consumption/current-month-daily-chart`,
+  GET_INVOICE_STATS: (locationId: string) =>
+    `/locations/${locationId}/invoices/summary-stats`,
+  GET_INVOICES: (locationId: string) => `/locations/${locationId}/invoices`,
 };
