@@ -1,5 +1,6 @@
 export const URL = {
   TENANT: "/tenant/:id",
+  TENANT_BASE: "tenant",
   OVERVIEW: "overview",
   TRACKING: "tracking",
   INVOICE: "invoice",

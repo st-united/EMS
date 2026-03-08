@@ -38,7 +38,7 @@ export const useLogin = () => {
       setStorageData(ACCESS_TOKEN, response.data.accessToken);
       setStorageData(REFRESH_TOKEN, response.data.refreshToken);
 
-      navigate("/");
+      navigate(`/tenant/${"demo-workspace-001"}`);
     },
     onError: (error: AxiosError<{ message?: string }>) => {
       const status = error?.response?.status;
@@ -102,7 +102,6 @@ export const useLogout = () => {
       toast.success(t("auth.logout.success", "Đăng xuất thành công!"));
     },
     onError: () => {
-      // Even if API fails, still clear local state
       removeStorageData(ACCESS_TOKEN);
       removeStorageData(REFRESH_TOKEN);
       removeStorageData(USER_PROFILE);

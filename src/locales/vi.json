@@ -58,7 +58,26 @@
   },
   "pages": {
     "overview": {
-      "title": "Tổng quan"
+      "title": "Tổng quan",
+      "error": "Dữ liệu thống kê không khả dụng hoặc đã xảy ra lỗi.",
+      "electricity": "Điện tiêu thụ tháng này",
+      "water": "Nước tiêu thụ tháng này",
+      "totalBill": "Tổng hóa đơn tháng này",
+      "savings": "Tiết kiệm được",
+      "comparedToLastMonth": "so với tháng trước",
+      "consumptionReduction": "giảm tiêu thụ",
+      "chart": {
+        "title": "Biểu đồ tiêu thụ 5 tháng gần nhất",
+        "subtitle": "So sánh tiêu thụ điện và nước theo tháng",
+        "electricity": "Điện (kWh)",
+        "water": "Nước (m³)"
+      },
+      "dailyChart": {
+        "electricityTitle": "Tiêu thụ điện tháng này",
+        "electricitySubtitle": "Theo dõi theo ngày",
+        "waterTitle": "Tiêu thụ nước tháng này",
+        "waterSubtitle": "Theo dõi theo ngày"
+      }
     },
     "tracking": {
       "title": "Theo dõi tiêu thụ"

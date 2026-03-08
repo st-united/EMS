@@ -36,11 +36,7 @@ export const HomePage = () => {
               icon={<Building2 size={18} />}
               className="w-full font-medium"
               onClick={() =>
-                navigate(
-                  URL.TENANT.replace(":id", DEMO_TENANT_ID) +
-                    "/" +
-                    URL.OVERVIEW,
-                )
+                navigate(URL.TENANT.replace(":id", DEMO_TENANT_ID))
               }
             >
               {t("home.goToTenant")}

@@ -17,4 +17,11 @@ export const API_URL = {
   REGISTER: "/auth/register",
   FORGOT_PASSWORD: "/auth/forgot-password",
   LOGOUT: "/auth/logout",
+  GET_USER_LOCATIONS: (userId: string) => `/locations/user/${userId}/locations`,
+  GET_CURRENT_MONTH_STATS: (locationId: string) =>
+    `/locations/${locationId}/current-month-stats`,
+  GET_5_MONTHS_CHART: (locationId: string) =>
+    `/locations/${locationId}/consumption/5-months-chart`,
+  GET_CURRENT_MONTH_DAILY_CHART: (locationId: string) =>
+    `/locations/${locationId}/consumption/current-month-daily-chart`,
 };
