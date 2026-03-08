@@ -115,7 +115,28 @@
       }
     },
     "profile": {
-      "title": "Thông tin cá nhân"
+      "title": "Thông tin cá nhân",
+      "edit": "Chỉnh sửa",
+      "save": "Lưu thay đổi",
+      "cancel": "Hủy",
+      "memberSince": "Thành viên từ",
+      "fullName": "Họ và tên",
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "dob": "Ngày sinh",
+      "address": "Địa chỉ",
+      "stats": {
+        "title": "Thống kê tài khoản",
+        "totalInvoices": "Tổng số hóa đơn",
+        "paid": "Đã thanh toán",
+        "unpaid": "Chưa thanh toán",
+        "totalSpending": "Tổng chi tiêu năm nay"
+      },
+      "locations": {
+        "title": "Địa điểm đăng ký"
+      },
+      "updateSuccess": "Cập nhật dữ liệu thành công",
+      "updateFail": "Cập nhật thất bại"
     }
   },
   "tenant": {
@@ -148,5 +169,8 @@
   },
   "errors": {
     "locationIdRequired": "Vui lòng cung cấp mã địa điểm (Location ID)!"
+  },
+  "common": {
+    "loading": "Đang tải..."
   }
 }
