@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import { ConsumptionType } from "@/constants";
 import type { DailyChartsProps } from "@/interfaces";
 
 export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
@@ -29,10 +30,10 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
           </div>
           <div className="flex items-center gap-2 rounded-lg bg-[#13b8a6]/20 px-3 py-1.5 text-sm font-medium text-[#13b8a6]">
             <Zap className="h-4 w-4" />
-            {stats.electricityConsumption} kWh
+            {stats[ConsumptionType.ELECTRICITY]} kWh
           </div>
         </div>
-        <div className="h-64 min-h-[256px] w-full">
+        <div className="h-64 min-h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={dailyChartData?.chartData || []}
@@ -72,7 +73,7 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
               />
               <Line
                 type="monotone"
-                dataKey="electricityConsumption"
+                dataKey={ConsumptionType.ELECTRICITY}
                 stroke="#13b8a6"
                 strokeWidth={2}
                 dot={{ fill: "#13b8a6", strokeWidth: 2, r: 4 }}
@@ -96,10 +97,10 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
           </div>
           <div className="flex items-center gap-2 rounded-lg bg-[#3b82f6]/20 px-3 py-1.5 text-sm font-medium text-[#3b82f6]">
             <Droplet className="h-4 w-4" />
-            {stats.waterConsumption} m³
+            {stats[ConsumptionType.WATER]} m³
           </div>
         </div>
-        <div className="h-64 min-h-[256px] w-full">
+        <div className="h-64 min-h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={dailyChartData?.chartData || []}
@@ -139,7 +140,7 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
               />
               <Line
                 type="monotone"
-                dataKey="waterConsumption"
+                dataKey={ConsumptionType.WATER}
                 stroke="#3b82f6"
                 strokeWidth={2}
                 dot={{ fill: "#3b82f6", strokeWidth: 2, r: 4 }}

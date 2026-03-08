@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-import { API_URL, ACCESS_TOKEN } from "@/constants";
+import { API_URL, ACCESS_TOKEN, QueryKeys } from "@/constants";
 import { getStorageData } from "@/configs/storages";
 import { type Location } from "@/interfaces";
 
@@ -25,7 +25,7 @@ export const useUserLocations = () => {
   const userId = getUserIdFromToken();
 
   const locationsQuery = useQuery<Location[]>({
-    queryKey: ["userLocations", userId],
+    queryKey: [QueryKeys.USER_LOCATIONS, userId],
     queryFn: async () => {
       const { data } = await getUserLocationsApi(userId!);
       return data.data;
@@ -42,7 +42,7 @@ export const useUserLocations = () => {
 
 export const useCurrentMonthStats = (locationId?: string) => {
   const statsQuery = useQuery({
-    queryKey: ["currentMonthStats", locationId],
+    queryKey: [QueryKeys.CURRENT_MONTH_STATS, locationId],
     queryFn: async () => {
       if (!locationId) throw new Error("Location ID is required");
       const { data } = await axios.get(
@@ -62,7 +62,7 @@ export const useCurrentMonthStats = (locationId?: string) => {
 
 export const use5MonthsChart = (locationId?: string) => {
   const chartQuery = useQuery({
-    queryKey: ["5MonthsChart", locationId],
+    queryKey: [QueryKeys.FIVE_MONTHS_CHART, locationId],
     queryFn: async () => {
       if (!locationId) throw new Error("Location ID is required");
       const { data } = await axios.get(API_URL.GET_5_MONTHS_CHART(locationId));
@@ -80,7 +80,7 @@ export const use5MonthsChart = (locationId?: string) => {
 
 export const useCurrentMonthDailyChart = (locationId?: string) => {
   const chartQuery = useQuery({
-    queryKey: ["currentMonthDailyChart", locationId],
+    queryKey: [QueryKeys.CURRENT_MONTH_DAILY_CHART, locationId],
     queryFn: async () => {
       if (!locationId) throw new Error("Location ID is required");
       const { data } = await axios.get(

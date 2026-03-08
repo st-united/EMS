@@ -1,14 +1,11 @@
+import { ConsumptionType } from "@/constants";
+
 export interface DailyChartsProps {
-  stats: {
-    electricityConsumption: number;
-    waterConsumption: number;
-  };
+  stats: Record<ConsumptionType, number>;
   dailyChartData: {
-    chartData: {
+    chartData: ({
       label: string;
-      electricityConsumption: number;
-      waterConsumption: number;
-    }[];
+    } & Record<ConsumptionType, number>)[];
     period: {
       from: string;
       to: string;
@@ -19,15 +16,20 @@ export interface DailyChartsProps {
 
 export interface FiveMonthsChartProps {
   chartData: {
-    chartData: {
+    chartData: ({
       label: string;
-      electricityConsumption: number;
-      waterConsumption: number;
-    }[];
+    } & Record<ConsumptionType, number>)[];
     period: {
       from: string;
       to: string;
     };
     groupBy: string;
+  };
+}
+
+export interface StatsCardsProps {
+  stats: Record<ConsumptionType, number> & {
+    totalBill: number;
+    savings: number;
   };
 }

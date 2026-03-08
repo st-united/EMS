@@ -17,7 +17,7 @@ export const TenantSidebar = () => {
 
   const currentPath = routeLocation.pathname.split("/").pop() || "";
   const activeMenuKey =
-    currentPath === locationIdFromUrl || currentPath === "tenant"
+    currentPath === locationIdFromUrl || currentPath === URL.TENANT_BASE
       ? URL.OVERVIEW
       : currentPath;
 
@@ -32,7 +32,7 @@ export const TenantSidebar = () => {
     if (location) {
       const targetPath =
         currentPath &&
-        currentPath !== "tenant" &&
+        currentPath !== URL.TENANT_BASE &&
         currentPath !== locationIdFromUrl
           ? currentPath
           : URL.OVERVIEW;

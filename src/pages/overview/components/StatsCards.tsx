@@ -1,14 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { Zap, Droplet, DollarSign, TrendingDown } from "lucide-react";
 
-interface StatsCardsProps {
-  stats: {
-    electricityConsumption: number;
-    waterConsumption: number;
-    totalBill: number;
-    savings: number;
-  };
-}
+import { ConsumptionType } from "@/constants";
+import type { StatsCardsProps } from "@/interfaces";
 
 export const StatsCards = ({ stats }: StatsCardsProps) => {
   const { t } = useTranslation();
@@ -35,7 +29,7 @@ export const StatsCards = ({ stats }: StatsCardsProps) => {
           </div>
         </div>
         <div className="mb-2 text-2xl font-bold text-white">
-          {stats.electricityConsumption} kWh
+          {stats[ConsumptionType.ELECTRICITY]} kWh
         </div>
         <div className="text-xs text-[#10b981]">
           +0% {t("pages.overview.comparedToLastMonth")}
@@ -52,7 +46,7 @@ export const StatsCards = ({ stats }: StatsCardsProps) => {
           </div>
         </div>
         <div className="mb-2 text-2xl font-bold text-white">
-          {stats.waterConsumption} m³
+          {stats[ConsumptionType.WATER]} m³
         </div>
         <div className="text-xs text-[#10b981]">
           +0% {t("pages.overview.comparedToLastMonth")}

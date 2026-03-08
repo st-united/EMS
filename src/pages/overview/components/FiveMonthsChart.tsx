@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import { ConsumptionType } from "@/constants";
 import type { FiveMonthsChartProps } from "@/interfaces";
 
 export const FiveMonthsChart = ({ chartData }: FiveMonthsChartProps) => {
@@ -77,7 +78,7 @@ export const FiveMonthsChart = ({ chartData }: FiveMonthsChartProps) => {
               wrapperStyle={{ paddingTop: "20px" }}
               formatter={(value) => {
                 const label =
-                  value === "electricityConsumption"
+                  value === ConsumptionType.ELECTRICITY
                     ? t("pages.overview.chart.electricity")
                     : t("pages.overview.chart.water");
                 return <span className="text-xs text-[#9ca3af]">{label}</span>;
@@ -85,13 +86,13 @@ export const FiveMonthsChart = ({ chartData }: FiveMonthsChartProps) => {
             />
             <Bar
               yAxisId="left"
-              dataKey="electricityConsumption"
+              dataKey={ConsumptionType.ELECTRICITY}
               fill="#13b8a6"
               radius={[4, 4, 0, 0]}
             />
             <Bar
               yAxisId="right"
-              dataKey="waterConsumption"
+              dataKey={ConsumptionType.WATER}
               fill="#3b82f6"
               radius={[4, 4, 0, 0]}
             />

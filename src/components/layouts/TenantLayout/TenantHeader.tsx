@@ -84,7 +84,9 @@ export const TenantHeader = () => {
               src={user?.avatar}
               icon={!user?.avatar && <UserOutlined />}
             />
-            <span className="text-sm font-medium">{user?.name || "User"}</span>
+            <span className="text-sm font-medium">
+              {user?.name || t("tenant.header.user", "User")}
+            </span>
           </button>
         </Dropdown>
       </div>
