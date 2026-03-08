@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 
 import type { Invoice, InvoiceTableProps } from "@/interfaces";
+import { InvoiceStatus, InvoiceTypeEnum } from "@/constants";
 
 import "../styles.css";
 
@@ -34,9 +35,10 @@ export const InvoiceTable = ({
       dataIndex: "invoiceType",
       key: "invoiceType",
       render: (type: string) => {
+        const lowerType = type.toLowerCase();
         const isDien =
-          type.toLowerCase().includes("điện") ||
-          type.toLowerCase().includes("electricity");
+          lowerType.includes(InvoiceTypeEnum.ELECTRICITY_VI) ||
+          lowerType.includes(InvoiceTypeEnum.ELECTRICITY_EN);
         if (isDien) {
           return (
             <span className="inline-block bg-[#064e3b] text-[#34d399] px-3 py-1 rounded align-middle text-sm font-medium">
@@ -55,7 +57,6 @@ export const InvoiceTable = ({
       title: t("pages.invoice.table.period", "Kỳ hạn"),
       key: "period",
       render: (_, record) => {
-        // Derive period from issueDate or notificationTitle
         const date = dayjs(record.issueDate);
         return (
           <span className="text-[#9ca3af]">
@@ -70,9 +71,10 @@ export const InvoiceTable = ({
       dataIndex: "consumedKwh",
       key: "consumedKwh",
       render: (val, record) => {
+        const lowerType = record.invoiceType.toLowerCase();
         const isDien =
-          record.invoiceType.toLowerCase().includes("điện") ||
-          record.invoiceType.toLowerCase().includes("electricity");
+          lowerType.includes(InvoiceTypeEnum.ELECTRICITY_VI) ||
+          lowerType.includes(InvoiceTypeEnum.ELECTRICITY_EN);
         const unit = isDien ? "kWh" : "m³";
         return (
           <span className="text-[#d1d5db]">
@@ -96,7 +98,8 @@ export const InvoiceTable = ({
       dataIndex: "status",
       key: "status",
       render: (status: string) => {
-        const isPending = status === "PENDING" || status === "UNPAID";
+        const isPending =
+          status === InvoiceStatus.PENDING || status === InvoiceStatus.UNPAID;
         if (isPending) {
           return (
             <span className="inline-block border border-[#ca8a04] bg-transparent text-[#facc15] px-3 py-0.5 rounded-full align-middle text-sm font-medium">
@@ -120,12 +123,13 @@ export const InvoiceTable = ({
             <span className="text-[#d1d5db]">
               {dayjs(record.dueDate).format("DD/MM/YYYY")}
             </span>
-            {record.status !== "PENDING" && record.status !== "UNPAID" && (
-              <span className="text-xs text-[#6b7280]">
-                {t("pages.invoice.table.paidOnPrefix", "Đã thanh toán:")}{" "}
-                {dayjs(record.issueDate).format("DD/MM/YYYY")}
-              </span>
-            )}
+            {record.status !== InvoiceStatus.PENDING &&
+              record.status !== InvoiceStatus.UNPAID && (
+                <span className="text-xs text-[#6b7280]">
+                  {t("pages.invoice.table.paidOnPrefix", "Đã thanh toán:")}{" "}
+                  {dayjs(record.issueDate).format("DD/MM/YYYY")}
+                </span>
+              )}
           </div>
         );
       },
@@ -135,7 +139,8 @@ export const InvoiceTable = ({
       key: "action",
       render: (_, record) => {
         const isPending =
-          record.status === "PENDING" || record.status === "UNPAID";
+          record.status === InvoiceStatus.PENDING ||
+          record.status === InvoiceStatus.UNPAID;
         return (
           <Space size="middle">
             <button
