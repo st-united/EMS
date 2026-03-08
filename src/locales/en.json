@@ -115,7 +115,28 @@
       }
     },
     "profile": {
-      "title": "Profile"
+      "title": "Personal Information",
+      "edit": "Edit",
+      "save": "Save Changes",
+      "cancel": "Cancel",
+      "memberSince": "Member since",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "dob": "Date of Birth",
+      "address": "Address",
+      "stats": {
+        "title": "Account Statistics",
+        "totalInvoices": "Total Invoices",
+        "paid": "Paid",
+        "unpaid": "Unpaid",
+        "totalSpending": "Total spending this year"
+      },
+      "locations": {
+        "title": "Registered Locations"
+      },
+      "updateSuccess": "Profile updated successfully",
+      "updateFail": "Update failed"
     }
   },
   "tenant": {
@@ -147,6 +168,9 @@
     "BACK_HOME": "Back to Home"
   },
   "errors": {
-    "locationIdRequired": "Location ID is required!"
+    "locationIdRequired": "Please provide a Location ID!"
+  },
+  "common": {
+    "loading": "Loading..."
   }
 }

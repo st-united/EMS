@@ -9,6 +9,8 @@ export const API_URL = {
   REFRESH_TOKEN: "/auth/refresh",
   ACTIVATE_ACCOUNT: "/auth/activate",
   GET_PROFILE: "/users/me",
+  GET_PROFILE_STATS: "/users/me/stats",
+  GET_ME_LOCATIONS: "/users/me/locations",
   UPDATE_PROFILE: "/users/profile",
   UPLOAD_AVATAR: "/users/avatar",
   REMOVE_AVATAR: "/users/avatar",

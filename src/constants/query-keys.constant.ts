@@ -4,6 +4,8 @@ export const QueryKeys = {
   FIVE_MONTHS_CHART: "5MonthsChart",
   CURRENT_MONTH_DAILY_CHART: "currentMonthDailyChart",
   USER_PROFILE: "userProfile",
+  PROFILE_STATS: "profileStats",
+  ME_LOCATIONS: "meLocations",
   INVOICE_STATS: "invoiceStats",
   INVOICES_LIST: "invoicesList",
 } as const;
