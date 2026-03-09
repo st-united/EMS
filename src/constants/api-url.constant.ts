@@ -29,4 +29,10 @@ export const API_URL = {
   GET_INVOICE_STATS: (locationId: string) =>
     `/locations/${locationId}/invoices/summary-stats`,
   GET_INVOICES: (locationId: string) => `/locations/${locationId}/invoices`,
+  GET_TODAY_OVERVIEW_STATS: (locationId: string) =>
+    `/locations/${locationId}/statistics/today-overview`,
+  GET_DAILY_ELECTRICITY_CHART: (locationId: string) =>
+    `/locations/${locationId}/statistics/daily-electricity-chart`,
+  GET_DAILY_WATER_CHART: (locationId: string) =>
+    `/locations/${locationId}/statistics/daily-water-chart`,
 };
