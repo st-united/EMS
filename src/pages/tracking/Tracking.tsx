@@ -21,14 +21,12 @@ export const TrackingPage = () => {
     useDailyWaterChart(locationId);
 
   return (
-    <div className="p-4 md:p-6 min-h-screen bg-[#020617]">
-      <div className="mb-6">
+    <div>
+      <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-6 mb-6">
         <h1 className="text-2xl font-bold text-white mb-2">
           {t("pages.tracking.title")}
         </h1>
-        <p className="text-zinc-400">
-          {t("pages.overview.dailyChart.electricitySubtitle")}
-        </p>
+        <p className="text-zinc-400">{t("pages.tracking.subtitle.header")}</p>
       </div>
 
       <TrackingSummaryCards data={todayOverview} loading={isLoadingOverview} />

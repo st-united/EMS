@@ -1,4 +1,4 @@
-import type { ChartData, TodayOverviewData } from ".";
+import type { ChartData, TodayOverviewData } from "./location.interface";
 
 export interface TrackingSummaryCardsProps {
   data?: TodayOverviewData;

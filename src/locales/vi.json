@@ -80,7 +80,7 @@
       }
     },
     "tracking": {
-      "title": "Theo dõi tiêu thụ",
+      "title": "Theo dõi tiêu thụ chi tiết",
       "electricityToday": "Điện hôm nay",
       "waterToday": "Nước hôm nay",
       "averageElectricity": "Trung bình điện/ngày",
@@ -98,6 +98,11 @@
         "subtitle": "Theo dõi tiêu thụ và chi phí theo ngày",
         "consumption": "Tiêu thụ (m³)",
         "cost": "Chi phí (VNĐ)"
+      },
+      "subtitle": {
+        "header": "Phân tích xu hướng sử dụng điện và nước",
+        "electricity": "Theo dõi theo ngày",
+        "water": "Theo dõi theo ngày"
       }
     },
     "invoice": {
@@ -189,6 +194,7 @@
     "locationIdRequired": "Vui lòng cung cấp mã địa điểm (Location ID)!"
   },
   "common": {
-    "loading": "Đang tải..."
+    "loading": "Đang tải...",
+    "currency": "VNĐ"
   }
 }

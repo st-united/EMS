@@ -98,6 +98,11 @@
         "subtitle": "Track consumption and cost by day",
         "consumption": "Consumption (m³)",
         "cost": "Cost (VNĐ)"
+      },
+      "subtitle": {
+        "header": "Analysis of electricity and water usage trends",
+        "electricity": "Theo dõi theo ngày",
+        "water": "Theo dõi theo ngày"
       }
     },
     "invoice": {
@@ -189,6 +194,7 @@
     "locationIdRequired": "Please provide a Location ID!"
   },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "currency": "VNĐ"
   }
 }

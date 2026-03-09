@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { type FC } from "react";
 import {
   LineChart,
@@ -22,6 +23,8 @@ export const ConsumptionChart: FC<ConsumptionChartProps> = ({
   lineColor,
   costLineColor,
 }) => {
+  const { t } = useTranslation();
+
   if (loading || !data) {
     return (
       <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-6 h-100 animate-pulse mb-6">
@@ -41,7 +44,7 @@ export const ConsumptionChart: FC<ConsumptionChartProps> = ({
         <p className="text-zinc-400 text-sm">{subtitle}</p>
       </div>
 
-      <div className="h-100 w-full">
+      <div className="h-96 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={chartData}
@@ -81,7 +84,7 @@ export const ConsumptionChart: FC<ConsumptionChartProps> = ({
               tickLine={false}
               axisLine={false}
               label={{
-                value: "VNĐ",
+                value: t("common.currency"),
                 angle: 90,
                 position: "insideRight",
                 offset: -10,
