@@ -8,6 +8,7 @@ export const QueryKeys = {
   ME_LOCATIONS: "meLocations",
   INVOICE_STATS: "invoiceStats",
   INVOICES_LIST: "invoicesList",
+  LOCATION_STATS: "locationStats",
 } as const;
 
 export type QueryKeys = (typeof QueryKeys)[keyof typeof QueryKeys];

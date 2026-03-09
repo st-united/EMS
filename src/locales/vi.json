@@ -80,7 +80,25 @@
       }
     },
     "tracking": {
-      "title": "Theo dõi tiêu thụ"
+      "title": "Theo dõi tiêu thụ",
+      "electricityToday": "Điện hôm nay",
+      "waterToday": "Nước hôm nay",
+      "averageElectricity": "Trung bình điện/ngày",
+      "averageWater": "Trung bình nước/ngày",
+      "vsYesterday": "So với hôm qua:",
+      "last7Days": "7 ngày qua",
+      "electricityChart": {
+        "title": "Biểu đồ tiêu thụ điện",
+        "subtitle": "Theo dõi tiêu thụ và chi phí theo ngày",
+        "consumption": "Tiêu thụ (kWh)",
+        "cost": "Chi phí (VNĐ)"
+      },
+      "waterChart": {
+        "title": "Biểu đồ tiêu thụ nước",
+        "subtitle": "Theo dõi tiêu thụ và chi phí theo ngày",
+        "consumption": "Tiêu thụ (m³)",
+        "cost": "Chi phí (VNĐ)"
+      }
     },
     "invoice": {
       "title": "Công nợ",

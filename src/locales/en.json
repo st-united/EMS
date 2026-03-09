@@ -80,7 +80,25 @@
       }
     },
     "tracking": {
-      "title": "Consumption Tracking"
+      "title": "Consumption Tracking",
+      "electricityToday": "Electricity today",
+      "waterToday": "Water today",
+      "averageElectricity": "Average electricity/day",
+      "averageWater": "Average water/day",
+      "vsYesterday": "Vs yesterday:",
+      "last7Days": "Last 7 days",
+      "electricityChart": {
+        "title": "Electricity Consumption Chart",
+        "subtitle": "Track consumption and cost by day",
+        "consumption": "Consumption (kWh)",
+        "cost": "Cost (VNĐ)"
+      },
+      "waterChart": {
+        "title": "Water Consumption Chart",
+        "subtitle": "Track consumption and cost by day",
+        "consumption": "Consumption (m³)",
+        "cost": "Cost (VNĐ)"
+      }
     },
     "invoice": {
       "title": "Invoices",

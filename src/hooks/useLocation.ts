@@ -4,6 +4,11 @@ import axios from "axios";
 import { API_URL, ACCESS_TOKEN, QueryKeys } from "@/constants";
 import { getStorageData } from "@/configs/storages";
 import { type Location } from "@/interfaces";
+import {
+  getTodayOverviewStatsApi,
+  getDailyElectricityChartApi,
+  getDailyWaterChartApi,
+} from "@/services";
 
 const getUserLocationsApi = (userId: string) =>
   axios.get(API_URL.GET_USER_LOCATIONS(userId));
@@ -86,6 +91,60 @@ export const useCurrentMonthDailyChart = (locationId?: string) => {
       const { data } = await axios.get(
         API_URL.GET_CURRENT_MONTH_DAILY_CHART(locationId),
       );
+      return data.data;
+    },
+    enabled: !!locationId,
+  });
+
+  return {
+    chartData: chartQuery.data,
+    isLoading: chartQuery.isLoading,
+    isError: chartQuery.isError,
+  };
+};
+
+export const useTodayOverviewStats = (locationId?: string) => {
+  const statsQuery = useQuery({
+    queryKey: [QueryKeys.LOCATION_STATS, locationId, "today-overview"],
+    queryFn: async () => {
+      if (!locationId) throw new Error("Location ID is required");
+      const { data } = await getTodayOverviewStatsApi(locationId);
+      return data.data;
+    },
+    enabled: !!locationId,
+  });
+
+  return {
+    todayOverview: statsQuery.data,
+    isLoading: statsQuery.isLoading,
+    isError: statsQuery.isError,
+  };
+};
+
+export const useDailyElectricityChart = (locationId?: string) => {
+  const chartQuery = useQuery({
+    queryKey: [QueryKeys.LOCATION_STATS, locationId, "electricity-chart"],
+    queryFn: async () => {
+      if (!locationId) throw new Error("Location ID is required");
+      const { data } = await getDailyElectricityChartApi(locationId);
+      return data.data;
+    },
+    enabled: !!locationId,
+  });
+
+  return {
+    chartData: chartQuery.data,
+    isLoading: chartQuery.isLoading,
+    isError: chartQuery.isError,
+  };
+};
+
+export const useDailyWaterChart = (locationId?: string) => {
+  const chartQuery = useQuery({
+    queryKey: [QueryKeys.LOCATION_STATS, locationId, "water-chart"],
+    queryFn: async () => {
+      if (!locationId) throw new Error("Location ID is required");
+      const { data } = await getDailyWaterChartApi(locationId);
       return data.data;
     },
     enabled: !!locationId,
