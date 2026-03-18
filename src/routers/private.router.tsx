@@ -2,7 +2,13 @@ import { type RouteObject } from "react-router-dom";
 
 import { PrivateLayout, TenantLayout } from "@/components/layouts";
 import { URL } from "@/constants";
-import { InvoicePage, OverviewPage, ProfilePage, TrackingPage } from "@/pages";
+import {
+  InvoiceDetailPage,
+  InvoicePage,
+  OverviewPage,
+  ProfilePage,
+  TrackingPage,
+} from "@/pages";
 
 const routes: RouteObject[] = [
   {
@@ -24,6 +30,10 @@ const routes: RouteObject[] = [
           {
             path: URL.INVOICE,
             element: <InvoicePage />,
+          },
+          {
+            path: URL.INVOICE_DETAIL,
+            element: <InvoiceDetailPage />,
           },
           {
             path: URL.PROFILE,

@@ -135,6 +135,32 @@
         "unpaidTag": "Unpaid",
         "paidTag": "Paid",
         "paidOnPrefix": "Paid on:"
+      },
+      "detail": {
+        "empty": "Invoice not found",
+        "meterName": "Meter",
+        "startIndex": "Start index",
+        "endIndex": "End index",
+        "consumptionM3": "Consumption (m³)",
+        "consumptionKwh": "Consumption (kWh)",
+        "timeFrame": "Time frame/Tier",
+        "unitPrice": "Unit price",
+        "amount": "Amount",
+        "back": "Back to list",
+        "export": "Export invoice",
+        "invoiceTitle": "Invoice",
+        "idLabel": "Invoice #{{id}}",
+        "dueDateLabel": "Due date: {{date}}",
+        "totalLabel": "Total amount",
+        "customerInfo": "Customer",
+        "locationInfo": "Location",
+        "energyTitle": "Consumption",
+        "periodLabel": "Period: from {{from}} to {{to}}",
+        "meters": "Meters",
+        "pricing": "Pricing details",
+        "totalConsumption": "Total consumption",
+        "subtotal": "Subtotal",
+        "vat": "VAT"
       }
     },
     "profile": {

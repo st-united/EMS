@@ -12,6 +12,7 @@ import {
 } from "recharts";
 
 import type { ConsumptionChartProps } from "@/interfaces";
+import { formatConsumption, formatVnd, normalizeConsumption } from "@/utils/format";
 
 export const ConsumptionChart: FC<ConsumptionChartProps> = ({
   title,
@@ -35,7 +36,11 @@ export const ConsumptionChart: FC<ConsumptionChartProps> = ({
     );
   }
 
-  const chartData = data.chartData;
+  const chartData =
+    data.chartData?.map((p) => ({
+      ...p,
+      consumption: normalizeConsumption(p.consumption),
+    })) ?? [];
 
   return (
     <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-6 mb-6">
@@ -68,6 +73,7 @@ export const ConsumptionChart: FC<ConsumptionChartProps> = ({
               fontSize={12}
               tickLine={false}
               axisLine={false}
+              tickFormatter={(v) => formatConsumption(v)}
               label={{
                 value: data.unit,
                 angle: -90,
@@ -100,6 +106,16 @@ export const ConsumptionChart: FC<ConsumptionChartProps> = ({
               }}
               itemStyle={{ fontSize: "12px" }}
               labelStyle={{ color: "#71717a", marginBottom: "4px" }}
+              formatter={(value, name) => {
+                const key = String(name);
+                if (key === consumptionLabel) {
+                  return [`${formatConsumption(value as number | string | undefined)} ${data.unit}`, consumptionLabel];
+                }
+                if (key === costLabel) {
+                  return [formatVnd(value as number | string), costLabel];
+                }
+                return [String(value), key];
+              }}
             />
             <Legend
               verticalAlign="bottom"

@@ -29,6 +29,12 @@ export const API_URL = {
   GET_INVOICE_STATS: (locationId: string) =>
     `/locations/${locationId}/invoices/summary-stats`,
   GET_INVOICES: (locationId: string) => `/locations/${locationId}/invoices`,
+  GET_ELECTRICITY_INVOICE_DETAIL: (invoiceId: string) =>
+    `/invoices/detail/${invoiceId}`,
+  GET_WATER_INVOICE_DETAIL: (invoiceId: string) =>
+    `/water-invoices/detail/${invoiceId}`,
+  GET_ELECTRICITY_INVOICE_PDF: (invoiceId: string) => `/invoices/${invoiceId}/pdf`,
+  GET_WATER_INVOICE_PDF: (invoiceId: string) => `/water-invoices/${invoiceId}/pdf`,
   GET_TODAY_OVERVIEW_STATS: (locationId: string) =>
     `/locations/${locationId}/statistics/today-overview`,
   GET_DAILY_ELECTRICITY_CHART: (locationId: string) =>

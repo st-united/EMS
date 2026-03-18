@@ -12,6 +12,7 @@ import {
 
 import { ConsumptionType } from "@/constants";
 import type { DailyChartsProps } from "@/interfaces";
+import { formatConsumption } from "@/utils/format";
 
 export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
   const { t } = useTranslation();
@@ -30,7 +31,7 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
           </div>
           <div className="flex items-center gap-2 rounded-lg bg-[#13b8a6]/20 px-3 py-1.5 text-sm font-medium text-[#13b8a6]">
             <Zap className="h-4 w-4" />
-            {stats[ConsumptionType.ELECTRICITY]} kWh
+            {formatConsumption(stats[ConsumptionType.ELECTRICITY])} kWh
           </div>
         </div>
         <div className="h-64 min-h-64 w-full">
@@ -97,7 +98,7 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
           </div>
           <div className="flex items-center gap-2 rounded-lg bg-[#3b82f6]/20 px-3 py-1.5 text-sm font-medium text-[#3b82f6]">
             <Droplet className="h-4 w-4" />
-            {stats[ConsumptionType.WATER]} m³
+            {formatConsumption(stats[ConsumptionType.WATER])} m³
           </div>
         </div>
         <div className="h-64 min-h-64 w-full">

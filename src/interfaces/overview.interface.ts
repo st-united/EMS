@@ -29,7 +29,7 @@ export interface FiveMonthsChartProps {
 
 export interface StatsCardsProps {
   stats: Record<ConsumptionType, number> & {
-    totalBill: number;
-    savings: number;
+    totalBill?: number;
+    savings?: number;
   };
 }

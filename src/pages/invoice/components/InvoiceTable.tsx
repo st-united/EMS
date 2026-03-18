@@ -2,10 +2,12 @@ import { Table, Space } from "antd";
 import { EyeOutlined, DownloadOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
 import dayjs from "dayjs";
 
 import type { Invoice, InvoiceTableProps } from "@/interfaces";
 import { InvoiceStatus, InvoiceTypeEnum } from "@/constants";
+import { formatConsumption, formatVnd } from "@/utils/format";
 
 import "../styles.css";
 
@@ -18,10 +20,8 @@ export const InvoiceTable = ({
   onPageChange,
 }: InvoiceTableProps) => {
   const { t } = useTranslation();
-
-  const formatCurrency = (value: string | number) => {
-    return new Intl.NumberFormat("vi-VN").format(Number(value)) + " đ";
-  };
+   const navigate = useNavigate();
+   const { id: locationId } = useParams<{ id: string }>();
 
   const columns: ColumnsType<Invoice> = [
     {
@@ -78,7 +78,7 @@ export const InvoiceTable = ({
         const unit = isDien ? "kWh" : "m³";
         return (
           <span className="text-[#d1d5db]">
-            {val} {unit}
+            {formatConsumption(val)} {unit}
           </span>
         );
       },
@@ -89,7 +89,7 @@ export const InvoiceTable = ({
       key: "totalAmount",
       render: (val) => (
         <span className="text-[#d1d5db] font-medium tabular-nums">
-          {formatCurrency(val)}
+          {formatVnd(val)}
         </span>
       ),
     },
@@ -146,6 +146,13 @@ export const InvoiceTable = ({
             <button
               aria-label={t("pages.invoice.table.view", "Xem chi tiết")}
               className="p-2 cursor-pointer bg-transparent border-none text-current"
+              onClick={() =>
+                navigate(
+                  `/tenant/${locationId}/invoice/${record.id}?type=${encodeURIComponent(
+                    record.invoiceType,
+                  )}`,
+                )
+              }
             >
               <EyeOutlined className="text-[#9ca3af] hover:text-white text-lg" />
             </button>

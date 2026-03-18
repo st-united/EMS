@@ -135,6 +135,32 @@
         "unpaidTag": "Chưa thanh toán",
         "paidTag": "Đã thanh toán",
         "paidOnPrefix": "Đã thanh toán:"
+      },
+      "detail": {
+        "empty": "Không tìm thấy hóa đơn",
+        "meterName": "Công tơ",
+        "startIndex": "Chỉ số đầu",
+        "endIndex": "Chỉ số cuối",
+        "consumptionM3": "Tiêu thụ (m³)",
+        "consumptionKwh": "Tiêu thụ (kWh)",
+        "timeFrame": "Khung/Bậc",
+        "unitPrice": "Đơn giá",
+        "amount": "Thành tiền",
+        "back": "Quay lại danh sách",
+        "export": "Xuất hóa đơn",
+        "invoiceTitle": "Hóa đơn",
+        "idLabel": "Mã hóa đơn #{{id}}",
+        "dueDateLabel": "Hạn thanh toán: {{date}}",
+        "totalLabel": "Tổng tiền",
+        "customerInfo": "Khách hàng",
+        "locationInfo": "Địa điểm",
+        "energyTitle": "Tiêu thụ",
+        "periodLabel": "Kỳ: từ {{from}} đến {{to}}",
+        "meters": "Công tơ",
+        "pricing": "Chi tiết tính giá",
+        "totalConsumption": "Tổng tiêu thụ",
+        "subtotal": "Tạm tính",
+        "vat": "VAT"
       }
     },
     "profile": {

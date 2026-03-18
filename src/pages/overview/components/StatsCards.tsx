@@ -3,19 +3,10 @@ import { Zap, Droplet, DollarSign, TrendingDown } from "lucide-react";
 
 import { ConsumptionType } from "@/constants";
 import type { StatsCardsProps } from "@/interfaces";
+import { formatConsumption, formatVnd } from "@/utils/format";
 
 export const StatsCards = ({ stats }: StatsCardsProps) => {
   const { t } = useTranslation();
-
-  const formatCurrency = (value: number) => {
-    if (value >= 1000000) {
-      return `${(value / 1000000).toFixed(1)}M VNĐ`;
-    }
-    if (value >= 1000) {
-      return `${(value / 1000).toFixed(0)}K VNĐ`;
-    }
-    return `${value} VNĐ`;
-  };
 
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -29,7 +20,7 @@ export const StatsCards = ({ stats }: StatsCardsProps) => {
           </div>
         </div>
         <div className="mb-2 text-2xl font-bold text-white">
-          {stats[ConsumptionType.ELECTRICITY]} kWh
+          {formatConsumption(stats[ConsumptionType.ELECTRICITY])} kWh
         </div>
         <div className="text-xs text-[#10b981]">
           +0% {t("pages.overview.comparedToLastMonth")}
@@ -46,7 +37,7 @@ export const StatsCards = ({ stats }: StatsCardsProps) => {
           </div>
         </div>
         <div className="mb-2 text-2xl font-bold text-white">
-          {stats[ConsumptionType.WATER]} m³
+          {formatConsumption(stats[ConsumptionType.WATER])} m³
         </div>
         <div className="text-xs text-[#10b981]">
           +0% {t("pages.overview.comparedToLastMonth")}
@@ -63,7 +54,7 @@ export const StatsCards = ({ stats }: StatsCardsProps) => {
           </div>
         </div>
         <div className="mb-2 text-2xl font-bold text-white">
-          {formatCurrency(stats.totalBill)}
+          {formatVnd(stats.totalBill)}
         </div>
         <div className="text-xs text-[#10b981]">
           -0% {t("pages.overview.comparedToLastMonth")}
@@ -80,7 +71,7 @@ export const StatsCards = ({ stats }: StatsCardsProps) => {
           </div>
         </div>
         <div className="mb-2 text-2xl font-bold text-white">
-          {formatCurrency(stats.savings)}
+          {formatVnd(stats.savings)}
         </div>
         <div className="text-xs text-[#10b981]">
           0% {t("pages.overview.consumptionReduction")}

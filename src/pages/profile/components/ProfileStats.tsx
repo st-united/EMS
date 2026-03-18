@@ -1,13 +1,10 @@
 import { useTranslation } from "react-i18next";
 
 import type { ProfileStatsProps } from "@/interfaces";
+import { formatVnd } from "@/utils/format";
 
 export const ProfileStats = ({ stats, isLoading }: ProfileStatsProps) => {
   const { t } = useTranslation();
-
-  const formatCurrency = (value: number) => {
-    return (value / 1000000).toFixed(1) + "M VNĐ";
-  };
 
   return (
     <div className="rounded-2xl border border-[#1f2937] bg-[#0b0c10] p-6 shadow-sm">
@@ -50,7 +47,7 @@ export const ProfileStats = ({ stats, isLoading }: ProfileStatsProps) => {
           <p className="text-3xl font-bold text-white tabular-nums">
             {isLoading
               ? "…"
-              : formatCurrency(stats?.totalSpendingThisYear || 0)}
+              : formatVnd(stats?.totalSpendingThisYear || 0)}
           </p>
         </div>
       </div>

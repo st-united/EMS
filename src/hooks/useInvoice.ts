@@ -3,7 +3,13 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 
 import { API_URL, QueryKeys } from "@/constants";
-import type { InvoiceStats, InvoicesResponse } from "@/interfaces";
+import type {
+  ElectricityInvoiceDetail,
+  InvoiceStats,
+  InvoicesResponse,
+  WaterInvoiceDetail,
+} from "@/interfaces";
+import { getElectricityInvoiceDetailApi, getWaterInvoiceDetailApi } from "@/services";
 
 export const useInvoiceStats = (locationId?: string) => {
   const { t } = useTranslation();
@@ -60,5 +66,35 @@ export const useInvoices = (
     invoicesData: listQuery.data,
     isLoading: listQuery.isLoading,
     isError: listQuery.isError,
+  };
+};
+
+export const useInvoiceDetail = (invoiceId?: string, invoiceType?: string) => {
+  const { t } = useTranslation();
+
+  const isWater =
+    (invoiceType ?? "").toLowerCase().includes("nước") ||
+    (invoiceType ?? "").toLowerCase().includes("water");
+
+  const detailQuery = useQuery({
+    queryKey: [QueryKeys.INVOICE_STATS, "detail", invoiceId, isWater],
+    queryFn: async () => {
+      if (!invoiceId)
+        throw new Error(t("errors.invoiceIdRequired", "Invoice ID is required"));
+
+      const { data } = isWater
+        ? await getWaterInvoiceDetailApi(invoiceId)
+        : await getElectricityInvoiceDetailApi(invoiceId);
+
+      return data.data as ElectricityInvoiceDetail | WaterInvoiceDetail;
+    },
+    enabled: !!invoiceId,
+  });
+
+  return {
+    detail: detailQuery.data,
+    isLoading: detailQuery.isLoading,
+    isError: detailQuery.isError,
+    isWater,
   };
 };

@@ -53,7 +53,32 @@ export const useCurrentMonthStats = (locationId?: string) => {
       const { data } = await axios.get(
         API_URL.GET_CURRENT_MONTH_STATS(locationId),
       );
-      return data.data;
+      const stats = data.data as {
+        electricityConsumption?: number;
+        waterConsumption?: number;
+        totalBill?: number;
+        savings?: number;
+        currentMonth?: string;
+      };
+
+      // Backend is documented as kWh/m³ but some deployments return Wh/L.
+      // Heuristic: for monthly totals, values in the tens of thousands are likely base units.
+      const electricityConsumption =
+        typeof stats.electricityConsumption === "number" &&
+        stats.electricityConsumption >= 10_000
+          ? stats.electricityConsumption / 1000
+          : (stats.electricityConsumption ?? 0);
+
+      const waterConsumption =
+        typeof stats.waterConsumption === "number" && stats.waterConsumption >= 10_000
+          ? stats.waterConsumption / 1000
+          : (stats.waterConsumption ?? 0);
+
+      return {
+        ...stats,
+        electricityConsumption,
+        waterConsumption,
+      };
     },
     enabled: !!locationId,
   });

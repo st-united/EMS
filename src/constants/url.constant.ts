@@ -4,6 +4,7 @@ export const URL = {
   OVERVIEW: "overview",
   TRACKING: "tracking",
   INVOICE: "invoice",
+  INVOICE_DETAIL: "invoice/:invoiceId",
   PROFILE: "profile",
   LOGIN: "/login",
   REGISTER: "/register",

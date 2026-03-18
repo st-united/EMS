@@ -2,16 +2,13 @@ import { Wallet, CalendarCheck, FileText } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import type { InvoiceStatsCardsProps } from "@/interfaces";
+import { formatVnd } from "@/utils/format";
 
 export const InvoiceStatsCards = ({
   stats,
   isLoading,
 }: InvoiceStatsCardsProps) => {
   const { t } = useTranslation();
-
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("vi-VN").format(value) + " đ";
-  };
 
   const currentMonth = new Date().getMonth() + 1;
   const currentYear = new Date().getFullYear();
@@ -30,7 +27,7 @@ export const InvoiceStatsCards = ({
         </div>
         <div>
           <div className="mb-1 text-2xl font-bold text-white tabular-nums">
-            {isLoading ? "…" : formatCurrency(stats?.totalUnpaidAmount || 0)}
+            {isLoading ? "…" : formatVnd(stats?.totalUnpaidAmount || 0)}
           </div>
           <div className="text-xs text-[#9ca3af] tabular-nums">
             {isLoading ? "…" : stats?.unpaidInvoicesCount || 0}{" "}
@@ -51,7 +48,7 @@ export const InvoiceStatsCards = ({
         </div>
         <div>
           <div className="mb-1 text-2xl font-bold text-white tabular-nums">
-            {isLoading ? "…" : formatCurrency(stats?.paidThisMonthAmount || 0)}
+            {isLoading ? "…" : formatVnd(stats?.paidThisMonthAmount || 0)}
           </div>
           <div className="text-xs text-[#9ca3af]">
             {t("pages.invoice.month", "Tháng")} {currentMonth}/{currentYear}
