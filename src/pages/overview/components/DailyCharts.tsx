@@ -12,10 +12,17 @@ import {
 
 import { ConsumptionType } from "@/constants";
 import type { DailyChartsProps } from "@/interfaces";
-import { formatConsumption } from "@/utils/format";
+import { formatConsumption, normalizeConsumption } from "@/utils/format";
 
 export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
   const { t } = useTranslation();
+
+  const normalizedChartData =
+    dailyChartData?.chartData?.map((d) => ({
+      ...d,
+      [ConsumptionType.ELECTRICITY]: normalizeConsumption(d[ConsumptionType.ELECTRICITY]),
+      [ConsumptionType.WATER]: normalizeConsumption(d[ConsumptionType.WATER]),
+    })) ?? [];
 
   return (
     <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -37,7 +44,7 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
         <div className="h-64 min-h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
-              data={dailyChartData?.chartData || []}
+              data={normalizedChartData}
               margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
             >
               <CartesianGrid
@@ -60,6 +67,7 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
                 tickLine={false}
                 axisLine={false}
                 tickCount={5}
+                tickFormatter={(v) => formatConsumption(v)}
               />
               <Tooltip
                 contentStyle={{
@@ -71,6 +79,12 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
                 itemStyle={{ color: "#fff" }}
                 cursor={{ stroke: "#1f2937", strokeWidth: 1 }}
                 labelFormatter={(value) => value}
+                formatter={(value, name) => [
+                  `${formatConsumption(value as number | string)} kWh`,
+                  String(name) === ConsumptionType.ELECTRICITY
+                    ? t("pages.overview.chart.electricity")
+                    : String(name),
+                ]}
               />
               <Line
                 type="monotone"
@@ -104,7 +118,7 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
         <div className="h-64 min-h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
-              data={dailyChartData?.chartData || []}
+              data={normalizedChartData}
               margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
             >
               <CartesianGrid
@@ -127,6 +141,7 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
                 tickLine={false}
                 axisLine={false}
                 tickCount={5}
+                tickFormatter={(v) => formatConsumption(v)}
               />
               <Tooltip
                 contentStyle={{
@@ -138,6 +153,12 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
                 itemStyle={{ color: "#fff" }}
                 cursor={{ stroke: "#1f2937", strokeWidth: 1 }}
                 labelFormatter={(value) => value}
+                formatter={(value, name) => [
+                  `${formatConsumption(value as number | string)} m³`,
+                  String(name) === ConsumptionType.WATER
+                    ? t("pages.overview.chart.water")
+                    : String(name),
+                ]}
               />
               <Line
                 type="monotone"
