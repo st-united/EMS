@@ -35,6 +35,10 @@ export const API_URL = {
     `/water-invoices/detail/${invoiceId}`,
   GET_ELECTRICITY_INVOICE_PDF: (invoiceId: string) => `/invoices/${invoiceId}/pdf`,
   GET_WATER_INVOICE_PDF: (invoiceId: string) => `/water-invoices/${invoiceId}/pdf`,
+  CREATE_ELECTRICITY_INVOICE_PAYMENT_LINK: (invoiceId: string) =>
+    `/invoices/${invoiceId}/payment-link`,
+  CREATE_WATER_INVOICE_PAYMENT_LINK: (invoiceId: string) =>
+    `/water-invoices/${invoiceId}/payment-link`,
   GET_TODAY_OVERVIEW_STATS: (locationId: string) =>
     `/locations/${locationId}/statistics/today-overview`,
   GET_DAILY_ELECTRICITY_CHART: (locationId: string) =>

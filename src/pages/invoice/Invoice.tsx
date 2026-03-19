@@ -1,15 +1,16 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Modal } from 'antd';
+import { Modal, QRCode } from 'antd';
 import { CopyOutlined, WalletOutlined } from '@ant-design/icons';
 import toast from 'react-hot-toast';
 import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 
 import { useInvoiceStats, useInvoices } from '@/hooks/useInvoice';
-import { generateVietQRUrl, useGetBankAccount } from '@/hooks';
+import { useGetBankAccount } from '@/hooks';
 import type { Invoice } from '@/interfaces';
-import { InvoiceTypeEnum } from '@/constants';
+import { API_URL, InvoiceTypeEnum } from '@/constants';
 import { formatConsumption, formatVnd } from '@/utils/format';
 import { InvoiceStatsCards } from './components/InvoiceStatsCards';
 import { InvoiceTable } from './components/InvoiceTable';
@@ -39,18 +40,64 @@ export const InvoicePage = () => {
   const { location } = useLocationDetail(locationId);
   const { data: bankAccount } = useGetBankAccount(location?.workspace?.id);
 
-  const qrUrl = useMemo(() => {
-    if (!bankAccount || !payingInvoice) return '';
-    const amount = Number(payingInvoice.totalAmount);
-    return generateVietQRUrl({
-      bankBin: bankAccount.bankBin,
-      accountNumber: bankAccount.accountNumber,
-      accountName: bankAccount.accountHolder,
-      amount: Number.isFinite(amount) ? amount : undefined,
-      description: payingInvoice.invoiceNumber,
-      template: 'compact2',
-    });
-  }, [bankAccount, payingInvoice]);
+  const [paymentLink, setPaymentLink] = useState<{
+    orderCode?: number | null;
+    qrCode: string;
+    checkoutUrl: string;
+  } | null>(null);
+  const [isCreatingPaymentLink, setIsCreatingPaymentLink] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const run = async () => {
+      if (!payingInvoice) {
+        setPaymentLink(null);
+        return;
+      }
+
+      setIsCreatingPaymentLink(true);
+      setPaymentLink(null);
+
+      try {
+        const lowerType = (payingInvoice.invoiceType ?? '').toLowerCase();
+        const isElectricity =
+          lowerType.includes(InvoiceTypeEnum.ELECTRICITY_VI) ||
+          lowerType.includes(InvoiceTypeEnum.ELECTRICITY_EN);
+
+        const url = isElectricity
+          ? API_URL.CREATE_ELECTRICITY_INVOICE_PAYMENT_LINK(payingInvoice.id)
+          : API_URL.CREATE_WATER_INVOICE_PAYMENT_LINK(payingInvoice.id);
+
+        const { data } = await axios.post(url);
+        const payload = (data?.data ?? null) as
+          | { orderCode?: number | null; qrCode: string; checkoutUrl: string }
+          | null;
+
+        if (!payload?.qrCode || !payload?.checkoutUrl) {
+          throw new Error('Invalid payment link response');
+        }
+
+        if (!cancelled) setPaymentLink(payload);
+      } catch {
+        if (!cancelled) {
+          toast.error(
+            t(
+              'pages.invoice.payment.createPaymentLinkFailed',
+              'Không thể tạo mã thanh toán. Vui lòng thử lại.',
+            ),
+          );
+        }
+      } finally {
+        if (!cancelled) setIsCreatingPaymentLink(false);
+      }
+    };
+
+    run();
+    return () => {
+      cancelled = true;
+    };
+  }, [payingInvoice, t]);
 
   const handleCopy = async (value?: string) => {
     if (!value) return;
@@ -255,13 +302,17 @@ export const InvoicePage = () => {
 
                 <div className='flex flex-col items-center justify-center'>
                   <div className='bg-white p-3 sm:p-4 rounded-lg'>
-                    {qrUrl ? (
-                      <img
-                        src={qrUrl}
-                        alt='VietQR'
-                        className='w-48 h-48 sm:w-55 sm:h-55 object-contain'
-                      />
-                    ) : (
+                    {isCreatingPaymentLink && (
+                      <div className='w-48 h-48 sm:w-55 sm:h-55 flex items-center justify-center text-[#0f172a]'>
+                        {t('common.loading', 'Đang tải...')}
+                      </div>
+                    )}
+                    {!isCreatingPaymentLink && paymentLink?.qrCode && (
+                      <div className='w-48 h-48 sm:w-55 sm:h-55 flex items-center justify-center'>
+                        <QRCode value={paymentLink.qrCode} size={212} bordered={false} />
+                      </div>
+                    )}
+                    {!isCreatingPaymentLink && !paymentLink?.qrCode && (
                       <div className='w-48 h-48 sm:w-55 sm:h-55 flex items-center justify-center text-[#0f172a]'>
                         QR
                       </div>
@@ -273,6 +324,19 @@ export const InvoicePage = () => {
                       'Quét mã QR để thanh toán nhanh',
                     )}
                   </div>
+                  {paymentLink?.checkoutUrl && (
+                    <a
+                      href={paymentLink.checkoutUrl}
+                      target='_blank'
+                      rel='noreferrer'
+                      className='mt-2 text-xs text-[#60a5fa] hover:text-white underline'
+                    >
+                      {t(
+                        'pages.invoice.payment.openCheckout',
+                        'Mở trang thanh toán',
+                      )}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
