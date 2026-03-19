@@ -16,6 +16,9 @@ export interface Location {
   name: string;
   locationType: LocationType;
   locationDevices: LocationDevice[];
+  workspace: {
+    id: string;
+  };
 }
 
 export interface LocationResponse {

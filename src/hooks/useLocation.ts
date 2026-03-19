@@ -90,6 +90,24 @@ export const useCurrentMonthStats = (locationId?: string) => {
   };
 };
 
+export const useLocationDetail = (locationId?: string) => {
+  const query = useQuery<{ data: Location }>({
+    queryKey: [QueryKeys.LOCATION_DETAIL, locationId],
+    queryFn: async () => {
+      if (!locationId) throw new Error("Location ID is required");
+      const { data } = await axios.get(API_URL.GET_LOCATION_DETAIL(locationId));
+      return data;
+    },
+    enabled: !!locationId,
+  });
+
+  return {
+    location: query.data?.data,
+    isLoading: query.isLoading,
+    isError: query.isError,
+  };
+};
+
 export const use5MonthsChart = (locationId?: string) => {
   const chartQuery = useQuery({
     queryKey: [QueryKeys.FIVE_MONTHS_CHART, locationId],

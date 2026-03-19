@@ -154,6 +154,7 @@ export interface InvoiceTableProps {
   take: number;
   total: number;
   onPageChange: (page: number, pageSize: number) => void;
+  onPay?: (invoice: Invoice) => void;
 }
 
 export interface InvoiceStatsCardsProps {

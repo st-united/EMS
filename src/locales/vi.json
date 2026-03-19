@@ -161,6 +161,32 @@
         "totalConsumption": "Tổng tiêu thụ",
         "subtotal": "Tạm tính",
         "vat": "VAT"
+      },
+      "payment": {
+        "title": "Thanh toán hóa đơn",
+        "invoiceInfo": {
+          "title": "Thông tin hóa đơn",
+          "invoiceNumber": "Mã hóa đơn",
+          "period": "Kỳ hạn",
+          "consumption": "Lượng tiêu thụ",
+          "dueDate": "Hạn thanh toán",
+          "totalPay": "Tổng tiền thanh toán"
+        },
+        "transferInfo": {
+          "title": "Thông tin chuyển khoản",
+          "notConfigured": "Chưa cấu hình tài khoản ngân hàng cho tòa nhà/workspace.",
+          "bankName": "Ngân hàng",
+          "accountNumber": "Số tài khoản",
+          "copyAccountNumber": "Sao chép số tài khoản",
+          "accountHolder": "Chủ tài khoản",
+          "qrHint": "Quét mã QR để thanh toán nhanh"
+        },
+        "note": {
+          "title": "Lưu ý quan trọng",
+          "line1": "Vui lòng kiểm tra thông tin chính xác trước khi chuyển khoản để hệ thống cập nhật tự động",
+          "line2": "Hóa đơn sẽ được cập nhật sau 1-5 phút kể từ khi chuyển khoản thành công",
+          "line3": "Liên hệ hotline  nếu cần hỗ trợ"
+        }
       }
     },
     "profile": {
@@ -221,6 +247,9 @@
   },
   "common": {
     "loading": "Đang tải...",
+    "close": "Đóng",
+    "copied": "Đã sao chép",
+    "copyFailed": "Không thể sao chép",
     "currency": "VNĐ"
   }
 }

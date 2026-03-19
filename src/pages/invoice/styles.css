@@ -1,10 +1,12 @@
 .invoice-dark-table .ant-table {
-  background-color: transparent !important;
   color: #d1d5db !important;
 }
 
+.css-var-root.ant-table-css-var {
+  --ant-table-header-border-radius: 0px !important;
+}
+
 .invoice-dark-table .ant-table-thead > tr > th {
-  background-color: transparent !important;
   color: #9ca3af !important;
   border-bottom: 1px solid #1f2937 !important;
   font-weight: 500;
@@ -17,9 +19,19 @@
 
 .invoice-dark-table .ant-table-tbody > tr > td {
   border-bottom: 1px solid #1f2937 !important;
-  background-color: transparent !important;
   padding: 16px 24px;
   transition: background-color 0.2s;
+}
+
+@media (max-width: 640px) {
+  .invoice-dark-table .ant-table-thead > tr > th,
+  .invoice-dark-table .ant-table-tbody > tr > td {
+    padding: 12px 12px;
+  }
+
+  .invoice-dark-table .ant-table-pagination {
+    margin-right: 12px !important;
+  }
 }
 
 .invoice-dark-table .ant-table-tbody > tr:hover > td {
@@ -58,3 +70,10 @@
 .invoice-dark-table .ant-table-pagination {
   margin-right: 24px !important;
 }
+
+.invoice-payment-modal > .ant-modal-container {
+  background-color: #1a1d29 !important;
+}
+/* .ant-table-wrapper .ant-table-cell.ant-table-cell-fix {
+  background-color: #1f2937 !important;
+} */

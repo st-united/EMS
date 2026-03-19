@@ -161,6 +161,32 @@
         "totalConsumption": "Total consumption",
         "subtotal": "Subtotal",
         "vat": "VAT"
+      },
+      "payment": {
+        "title": "Invoice payment",
+        "invoiceInfo": {
+          "title": "Invoice info",
+          "invoiceNumber": "Invoice number",
+          "period": "Period",
+          "consumption": "Consumption",
+          "dueDate": "Due date",
+          "totalPay": "Total to pay"
+        },
+        "transferInfo": {
+          "title": "Bank transfer info",
+          "notConfigured": "No bank account configured for this workspace/building.",
+          "bankName": "Bank",
+          "accountNumber": "Account number",
+          "copyAccountNumber": "Copy account number",
+          "accountHolder": "Account holder",
+          "qrHint": "Scan the QR to pay faster"
+        },
+        "note": {
+          "title": "Important notes",
+          "line1": "Please verify the bank transfer information before paying so the system can auto-update.",
+          "line2": "The invoice will be updated 1–5 minutes after a successful transfer.",
+          "line3": "Contact hotline  if you need support."
+        }
       }
     },
     "profile": {
@@ -221,6 +247,9 @@
   },
   "common": {
     "loading": "Loading...",
+    "close": "Close",
+    "copied": "Copied",
+    "copyFailed": "Couldn't copy",
     "currency": "VNĐ"
   }
 }

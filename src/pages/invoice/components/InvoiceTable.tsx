@@ -18,22 +18,31 @@ export const InvoiceTable = ({
   take,
   total,
   onPageChange,
+  onPay,
 }: InvoiceTableProps) => {
   const { t } = useTranslation();
-   const navigate = useNavigate();
-   const { id: locationId } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const { id: locationId } = useParams<{ id: string }>();
 
   const columns: ColumnsType<Invoice> = [
     {
       title: t("pages.invoice.table.invoiceNumber", "Mã hóa đơn"),
       dataIndex: "invoiceNumber",
       key: "invoiceNumber",
-      render: (text) => <span className="text-[#d1d5db]">{text}</span>,
+      width: 170,
+      ellipsis: true,
+      render: (text) => (
+        <span className="text-[#d1d5db] font-medium whitespace-nowrap">
+          {text}
+        </span>
+      ),
     },
     {
       title: t("pages.invoice.table.type", "Loại"),
       dataIndex: "invoiceType",
       key: "invoiceType",
+      width: 110,
+      responsive: ["sm"],
       render: (type: string) => {
         const lowerType = type.toLowerCase();
         const isDien =
@@ -56,10 +65,12 @@ export const InvoiceTable = ({
     {
       title: t("pages.invoice.table.period", "Kỳ hạn"),
       key: "period",
+      width: 120,
+      responsive: ["md"],
       render: (_, record) => {
         const date = dayjs(record.issueDate);
         return (
-          <span className="text-[#9ca3af]">
+          <span className="text-[#9ca3af] whitespace-nowrap">
             {t("pages.invoice.table.monthPrefix", "Tháng")}{" "}
             {date.format("M/YYYY")}
           </span>
@@ -70,6 +81,8 @@ export const InvoiceTable = ({
       title: t("pages.invoice.table.consumption", "Tiêu thụ"),
       dataIndex: "consumedKwh",
       key: "consumedKwh",
+      width: 120,
+      responsive: ["lg"],
       render: (val, record) => {
         const lowerType = record.invoiceType.toLowerCase();
         const isDien =
@@ -77,7 +90,7 @@ export const InvoiceTable = ({
           lowerType.includes(InvoiceTypeEnum.ELECTRICITY_EN);
         const unit = isDien ? "kWh" : "m³";
         return (
-          <span className="text-[#d1d5db]">
+          <span className="text-[#d1d5db] whitespace-nowrap">
             {formatConsumption(val)} {unit}
           </span>
         );
@@ -87,8 +100,9 @@ export const InvoiceTable = ({
       title: t("pages.invoice.table.amount", "Số tiền"),
       dataIndex: "totalAmount",
       key: "totalAmount",
+      width: 150,
       render: (val) => (
-        <span className="text-[#d1d5db] font-medium tabular-nums">
+        <span className="text-[#d1d5db] font-medium tabular-nums whitespace-nowrap">
           {formatVnd(val)}
         </span>
       ),
@@ -97,6 +111,8 @@ export const InvoiceTable = ({
       title: t("pages.invoice.table.status", "Trạng thái"),
       dataIndex: "status",
       key: "status",
+      width: 200,
+      responsive: ["lg"],
       render: (status: string) => {
         const isPending =
           status === InvoiceStatus.PENDING || status === InvoiceStatus.UNPAID;
@@ -117,6 +133,8 @@ export const InvoiceTable = ({
     {
       title: t("pages.invoice.table.dueDate", "Hạn thanh toán"),
       key: "dueDate",
+      width: 160,
+      responsive: ["md"],
       render: (_, record) => {
         return (
           <div className="flex flex-col">
@@ -137,12 +155,14 @@ export const InvoiceTable = ({
     {
       title: t("pages.invoice.table.action", "Hành động"),
       key: "action",
+      width: 190,
+      fixed: "right",
       render: (_, record) => {
         const isPending =
           record.status === InvoiceStatus.PENDING ||
           record.status === InvoiceStatus.UNPAID;
         return (
-          <Space size="middle">
+          <Space size={8} wrap={false} className="whitespace-nowrap">
             <button
               aria-label={t("pages.invoice.table.view", "Xem chi tiết")}
               className="p-2 cursor-pointer bg-transparent border-none text-current"
@@ -163,7 +183,10 @@ export const InvoiceTable = ({
               <DownloadOutlined className="text-[#9ca3af] hover:text-white text-lg" />
             </button>
             {isPending && (
-              <button className="bg-[#14b8a6] hover:bg-[#0d9488] transition-colors border-none text-white px-4 py-1.5 rounded-md font-medium cursor-pointer">
+              <button
+                className="bg-[#14b8a6] hover:bg-[#0d9488] transition-colors border-none text-white px-4 py-1.5 rounded-md font-medium cursor-pointer"
+                onClick={() => onPay?.(record)}
+              >
                 {t("pages.invoice.table.pay", "Thanh toán")}
               </button>
             )}
@@ -197,6 +220,7 @@ export const InvoiceTable = ({
         dataSource={data}
         rowKey="id"
         loading={isLoading}
+        tableLayout="fixed"
         pagination={{
           current: page,
           pageSize: take,
@@ -206,7 +230,7 @@ export const InvoiceTable = ({
           className: "px-6 py-4",
         }}
         className="invoice-dark-table"
-        scroll={{ x: 1000 }}
+        scroll={{ x: "max-content" }}
       />
     </div>
   );

@@ -9,6 +9,8 @@ export const QueryKeys = {
   INVOICE_STATS: "invoiceStats",
   INVOICES_LIST: "invoicesList",
   LOCATION_STATS: "locationStats",
+  LOCATION_DETAIL: "locationDetail",
+  BANK_ACCOUNT: "bankAccount",
 } as const;
 
 export type QueryKeys = (typeof QueryKeys)[keyof typeof QueryKeys];
