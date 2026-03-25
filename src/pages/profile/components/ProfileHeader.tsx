@@ -1,7 +1,8 @@
-import { Edit2, User } from "lucide-react";
+import { Edit2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import type { ProfileHeaderProps } from "@/interfaces";
+import { nameInitial } from "@/utils";
 
 export const ProfileHeader = ({
   user,
@@ -15,7 +16,13 @@ export const ProfileHeader = ({
       <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
         <div className="flex flex-col items-center gap-6 sm:flex-row">
           <div className="relative">
-            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-md">
+            <div
+              className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-white shadow-md"
+              role={user?.avatar ? undefined : "img"}
+              aria-label={
+                user?.avatar ? undefined : user?.name || "User"
+              }
+            >
               {user?.avatar ? (
                 <img
                   src={user.avatar}
@@ -23,7 +30,12 @@ export const ProfileHeader = ({
                   className="h-full w-full rounded-full object-cover"
                 />
               ) : (
-                <User className="h-12 w-12 text-[#14b8a6]" />
+                <span
+                  className="select-none text-4xl font-bold text-[#14b8a6]"
+                  aria-hidden
+                >
+                  {nameInitial(user?.name)}
+                </span>
               )}
             </div>
           </div>

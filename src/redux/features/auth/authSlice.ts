@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 import { getStorageData } from "@/configs/storages";
 import { ACCESS_TOKEN } from "@/constants";
@@ -8,6 +8,11 @@ interface AuthState {
   isAuth: boolean;
   user: UserProfile | null;
   permissions: string[];
+}
+
+export interface SetAuthPayload {
+  user: UserProfile;
+  permissions?: string[];
 }
 
 const checkAuth = (): boolean => Boolean(getStorageData(ACCESS_TOKEN));
@@ -25,11 +30,9 @@ const authSlice = createSlice({
     login(state) {
       state.isAuth = true;
     },
-    setAuth(state, action) {
-      const { permissions } = action.payload;
-
-      state.user = action.payload;
-      state.permissions = permissions;
+    setAuth(state, action: PayloadAction<SetAuthPayload>) {
+      state.user = action.payload.user;
+      state.permissions = action.payload.permissions ?? [];
     },
     logout(state) {
       state.isAuth = false;
