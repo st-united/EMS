@@ -2,7 +2,7 @@ import { type RouteObject } from "react-router-dom";
 
 import { PublicLayout } from "@/components/layouts";
 import { URL } from "@/constants/url.constant";
-import { LoginPage, RegisterPage, ForgotPasswordPage } from "@/pages";
+import { LoginPage, ForgotPasswordPage } from "@/pages";
 
 const routes: RouteObject[] = [
   {
@@ -11,10 +11,6 @@ const routes: RouteObject[] = [
       {
         path: URL.LOGIN,
         element: <LoginPage />,
-      },
-      {
-        path: URL.REGISTER,
-        element: <RegisterPage />,
       },
       {
         path: URL.FORGOT_PASSWORD,

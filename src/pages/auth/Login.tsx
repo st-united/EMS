@@ -87,16 +87,6 @@ export const LoginPage = () => {
               {t("auth.login.submit")}
             </Button>
           </Form.Item>
-
-          <div className="text-center text-sm text-[#99A1AF]">
-            {t("auth.login.noAccount")}{" "}
-            <Link
-              to={URL.REGISTER}
-              className="font-medium text-[#1890ff] hover:text-blue-400"
-            >
-              {t("auth.login.registerNow")}
-            </Link>
-          </div>
         </Form>
       </div>
     </div>

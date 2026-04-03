@@ -52,24 +52,9 @@ export const formatVnd = (value?: number | string | null) => {
   return formatted === "—" ? formatted : `${formatted} đ`;
 };
 
-// Some deployments may return base units (Wh/L) while UI expects kWh/m³.
-// Heuristic: monthly/invoice totals in the tens of thousands are likely base units.
-export const normalizeConsumption = (
-  value?: number | string | null,
-): number | null => {
-  if (value === undefined || value === null) return null;
-  const num = parseNumberLike(
-    typeof value === "string" || typeof value === "number" ? value : String(value),
-  );
-  if (!Number.isFinite(num)) return null;
-  return num >= 10_000 ? num / 1000 : num;
-};
-
 export const formatConsumption = (
   value?: number | string | null,
   maximumFractionDigits = 2,
 ) => {
-  const normalized = normalizeConsumption(value);
-  if (normalized === null) return value == null ? "—" : String(value);
-  return formatNumber(normalized, { maximumFractionDigits });
+  return formatNumber(value, { maximumFractionDigits });
 };

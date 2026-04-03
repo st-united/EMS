@@ -12,17 +12,12 @@ import {
 
 import { ConsumptionType } from "@/constants";
 import type { DailyChartsProps } from "@/interfaces";
-import { formatConsumption, normalizeConsumption } from "@/utils/format";
+import { formatConsumption } from "@/utils/format";
 
 export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
   const { t } = useTranslation();
 
-  const normalizedChartData =
-    dailyChartData?.chartData?.map((d) => ({
-      ...d,
-      [ConsumptionType.ELECTRICITY]: normalizeConsumption(d[ConsumptionType.ELECTRICITY]),
-      [ConsumptionType.WATER]: normalizeConsumption(d[ConsumptionType.WATER]),
-    })) ?? [];
+  const chartData = dailyChartData?.chartData ?? [];
 
   return (
     <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -44,7 +39,7 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
         <div className="h-64 min-h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
-              data={normalizedChartData}
+              data={chartData}
               margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
             >
               <CartesianGrid
@@ -118,7 +113,7 @@ export const DailyCharts = ({ stats, dailyChartData }: DailyChartsProps) => {
         <div className="h-64 min-h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
-              data={normalizedChartData}
+              data={chartData}
               margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
             >
               <CartesianGrid

@@ -12,7 +12,7 @@ import {
 } from "recharts";
 
 import type { ConsumptionChartProps } from "@/interfaces";
-import { formatConsumption, formatVnd, normalizeConsumption } from "@/utils/format";
+import { formatConsumption, formatVnd } from "@/utils/format";
 
 export const ConsumptionChart: FC<ConsumptionChartProps> = ({
   title,
@@ -36,11 +36,7 @@ export const ConsumptionChart: FC<ConsumptionChartProps> = ({
     );
   }
 
-  const chartData =
-    data.chartData?.map((p) => ({
-      ...p,
-      consumption: normalizeConsumption(p.consumption),
-    })) ?? [];
+  const chartData = data.chartData ?? [];
 
   return (
     <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-6 mb-6">
