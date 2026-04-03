@@ -1,6 +1,6 @@
 {
   "home": {
-    "title": "EMS",
+    "title": "Billing management",
     "subtitle": "Energy Management System",
     "goToTenant": "Go to Tenant",
     "logout": "Log out",
@@ -9,7 +9,7 @@
   "auth": {
     "login": {
       "title": "Log in",
-      "subtitle": "Welcome back to EMS",
+      "subtitle": "Welcome back to Billing management",
       "email": "Email",
       "password": "Password",
       "emailRequired": "Please enter your email!",

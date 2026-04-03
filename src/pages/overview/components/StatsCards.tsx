@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Zap, Droplet, DollarSign, TrendingDown } from "lucide-react";
+import { Zap, Droplet, TrendingDown, Banknote } from "lucide-react";
 
 import { ConsumptionType } from "@/constants";
 import type { StatsCardsProps } from "@/interfaces";
@@ -50,7 +50,7 @@ export const StatsCards = ({ stats }: StatsCardsProps) => {
             {t("pages.overview.totalBill")}
           </div>
           <div className="rounded-lg bg-[#8b5cf6] p-2.5">
-            <DollarSign className="h-5 w-5 text-white" />
+            <Banknote className="h-5 w-5 text-white" />
           </div>
         </div>
         <div className="mb-2 text-2xl font-bold text-white">

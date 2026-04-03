@@ -1,5 +1,5 @@
 import { Layout, Button, Avatar, Dropdown, type MenuProps } from 'antd';
-import { BellOutlined, MenuOutlined, GlobalOutlined } from '@ant-design/icons';
+import { MenuOutlined, GlobalOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
 import { LANGUAGE_DATA, LOCALE_STORAGE, LOCALES } from '@/constants';
@@ -66,13 +66,7 @@ export const TenantHeader = ({ onMenuClick }: TenantHeaderProps) => {
           </button>
         </Dropdown>
 
-        <Button
-          type='text'
-          shape='circle'
-          icon={<BellOutlined />}
-          className='text-white!'
-          aria-label='Notifications'
-        />
+
         <Dropdown
           menu={{
             items: userMenuItems,

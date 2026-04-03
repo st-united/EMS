@@ -1,6 +1,6 @@
 {
   "home": {
-    "title": "EMS",
+    "title": "Billing management",
     "subtitle": "Hệ thống quản lý năng lượng",
     "goToTenant": "Đi tới Tenant",
     "logout": "Đăng xuất",
@@ -9,7 +9,7 @@
   "auth": {
     "login": {
       "title": "Đăng nhập",
-      "subtitle": "Chào mừng trở lại EMS",
+      "subtitle": "Chào mừng trở lại Billing management",
       "email": "Email",
       "password": "Mật khẩu",
       "emailRequired": "Vui lòng nhập email!",

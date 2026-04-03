@@ -54,8 +54,8 @@ export const TenantSidebar = ({
     if (location) {
       const targetPath =
         currentPath &&
-        currentPath !== URL.TENANT_BASE &&
-        currentPath !== locationIdFromUrl
+          currentPath !== URL.TENANT_BASE &&
+          currentPath !== locationIdFromUrl
           ? currentPath
           : URL.OVERVIEW;
       navigate(`/tenant/${locationId}/${targetPath}`);
@@ -129,7 +129,7 @@ export const TenantSidebar = ({
         <img src={Logo} alt="logo" className="h-8 w-8 shrink-0" />
         {!showCollapsedChrome && (
           <div className="flex flex-col min-w-0">
-            <span className="text-2xl font-medium text-white">EMS</span>
+            <span className="text-2xl font-medium text-white">Billing management</span>
           </div>
         )}
       </div>
