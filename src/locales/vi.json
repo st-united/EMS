@@ -103,6 +103,12 @@
         "header": "Phân tích xu hướng sử dụng điện và nước",
         "electricity": "Theo dõi theo ngày",
         "water": "Theo dõi theo ngày"
+      },
+      "tierDetail": {
+        "title": "Chi tiết tiêu thụ điện theo khung giờ",
+        "consumption": "Tiêu thụ",
+        "unitPrice": "Đơn giá",
+        "amount": "Thành tiền"
       }
     },
     "invoice": {

@@ -16,3 +16,6 @@ export const getDailyElectricityChartApi = (locationId: string) =>
 
 export const getDailyWaterChartApi = (locationId: string) =>
   axios.get(API_URL.GET_DAILY_WATER_CHART(locationId));
+
+export const getElectricityTierDetailApi = (locationId: string) =>
+  axios.get(API_URL.GET_ELECTRICITY_TIER_DETAIL(locationId));

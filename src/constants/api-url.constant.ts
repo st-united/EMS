@@ -45,6 +45,8 @@ export const API_URL = {
     `/locations/${locationId}/statistics/daily-electricity-chart`,
   GET_DAILY_WATER_CHART: (locationId: string) =>
     `/locations/${locationId}/statistics/daily-water-chart`,
+  GET_ELECTRICITY_TIER_DETAIL: (locationId: string) =>
+    `/locations/${locationId}/statistics/electricity-tier-detail`,
   GET_LOCATION_DETAIL: (locationId: string) => `/locations/${locationId}`,
   GET_BANK_ACCOUNT: (workspaceId: string) =>
     `/workspaces/${workspaceId}/bank-account`,

@@ -103,6 +103,12 @@
         "header": "Analysis of electricity and water usage trends",
         "electricity": "Theo dõi theo ngày",
         "water": "Theo dõi theo ngày"
+      },
+      "tierDetail": {
+        "title": "Electricity consumption by time frame this month",
+        "consumption": "Consumption",
+        "unitPrice": "Unit price",
+        "amount": "Amount"
       }
     },
     "invoice": {

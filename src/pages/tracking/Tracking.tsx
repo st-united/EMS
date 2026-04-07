@@ -5,9 +5,11 @@ import {
   useTodayOverviewStats,
   useDailyElectricityChart,
   useDailyWaterChart,
+  useElectricityTierDetail,
 } from "@/hooks";
 import { TrackingSummaryCards } from "./components/TrackingSummaryCards";
 import { ConsumptionChart } from "./components/ConsumptionChart";
+import { ElectricityTierCards } from "./components/ElectricityTierCards";
 
 export const TrackingPage = () => {
   const { t } = useTranslation();
@@ -19,6 +21,8 @@ export const TrackingPage = () => {
     useDailyElectricityChart(locationId);
   const { chartData: waterChart, isLoading: isLoadingWater } =
     useDailyWaterChart(locationId);
+  const { tierData, isLoading: isLoadingTier } =
+    useElectricityTierDetail(locationId);
 
   return (
     <div>
@@ -30,6 +34,12 @@ export const TrackingPage = () => {
       </div>
 
       <TrackingSummaryCards data={todayOverview} loading={isLoadingOverview} />
+
+      <ElectricityTierCards
+        tiers={tierData?.tiers}
+        pricingModel={tierData?.pricingModel}
+        loading={isLoadingTier}
+      />
 
       <div className="grid grid-cols-1 gap-6">
         <ConsumptionChart

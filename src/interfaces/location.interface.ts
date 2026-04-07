@@ -28,9 +28,13 @@ export interface LocationResponse {
 
 export interface ResourceStats {
   today: number;
+  todayFormatted?: string;
   yesterday: number;
+  yesterdayFormatted?: string;
   percentChange: number;
+  percentChangeFormatted?: string;
   sevenDayAverage: number;
+  sevenDayAverageFormatted?: string;
   unit: string;
 }
 

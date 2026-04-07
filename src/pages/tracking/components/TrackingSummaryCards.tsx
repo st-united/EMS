@@ -28,30 +28,32 @@ export const TrackingSummaryCards: FC<TrackingSummaryCardsProps> = ({
   const cards = [
     {
       title: t("pages.tracking.electricityToday"),
-      value: `${electricity.today} ${electricity.unit}`,
-      comparison: `${t("pages.tracking.vsYesterday")} ${electricity.yesterday} ${electricity.unit}`,
+      value: `${electricity.todayFormatted} ${electricity.unit}`,
+      comparison: `${t("pages.tracking.vsYesterday")} ${electricity.yesterdayFormatted} ${electricity.unit}`,
       percent: electricity.percentChange,
+      percentFormatted: electricity.percentChangeFormatted,
       icon: <Zap className="w-6 h-6 text-emerald-400" />,
       iconBg: "bg-emerald-500/10",
     },
     {
       title: t("pages.tracking.waterToday"),
-      value: `${water.today} ${water.unit}`,
-      comparison: `${t("pages.tracking.vsYesterday")} ${water.yesterday} ${water.unit}`,
+      value: `${water.todayFormatted} ${water.unit}`,
+      comparison: `${t("pages.tracking.vsYesterday")} ${water.yesterdayFormatted} ${water.unit}`,
       percent: water.percentChange,
+      percentFormatted: water.percentChangeFormatted,
       icon: <Droplets className="w-6 h-6 text-blue-400" />,
       iconBg: "bg-blue-500/10",
     },
     {
       title: t("pages.tracking.averageElectricity"),
-      value: `${electricity.sevenDayAverage} ${electricity.unit}`,
+      value: `${electricity.sevenDayAverageFormatted} ${electricity.unit}`,
       comparison: t("pages.tracking.last7Days"),
       icon: <Calendar className="w-6 h-6 text-purple-400" />,
       iconBg: "bg-purple-500/10",
     },
     {
       title: t("pages.tracking.averageWater"),
-      value: `${water.sevenDayAverage} ${water.unit}`,
+      value: `${water.sevenDayAverageFormatted} ${water.unit}`,
       comparison: t("pages.tracking.last7Days"),
       icon: <Calendar className="w-6 h-6 text-cyan-400" />,
       iconBg: "bg-cyan-500/10",
@@ -74,7 +76,7 @@ export const TrackingSummaryCards: FC<TrackingSummaryCardsProps> = ({
                 }`}
               >
                 {card.percent >= 0 ? "+" : ""}
-                {card.percent}%
+                {card.percentFormatted ?? card.percent}%
               </div>
             )}
           </div>

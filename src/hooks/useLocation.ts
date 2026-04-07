@@ -8,6 +8,7 @@ import {
   getTodayOverviewStatsApi,
   getDailyElectricityChartApi,
   getDailyWaterChartApi,
+  getElectricityTierDetailApi,
 } from "@/services";
 
 const getUserLocationsApi = (userId: string) =>
@@ -178,5 +179,23 @@ export const useDailyWaterChart = (locationId?: string) => {
     chartData: chartQuery.data,
     isLoading: chartQuery.isLoading,
     isError: chartQuery.isError,
+  };
+};
+
+export const useElectricityTierDetail = (locationId?: string) => {
+  const query = useQuery({
+    queryKey: [QueryKeys.LOCATION_STATS, locationId, "electricity-tier-detail"],
+    queryFn: async () => {
+      if (!locationId) throw new Error("Location ID is required");
+      const { data } = await getElectricityTierDetailApi(locationId);
+      return data.data;
+    },
+    enabled: !!locationId,
+  });
+
+  return {
+    tierData: query.data,
+    isLoading: query.isLoading,
+    isError: query.isError,
   };
 };
